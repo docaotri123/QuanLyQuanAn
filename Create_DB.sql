@@ -1,0 +1,51 @@
+CREATE TABLE TableFood
+(
+	idTable INT IDENTITY PRIMARY KEY,
+	nameTable NVARCHAR(50) NOT NULL,
+	statusTable NVARCHAR(50) NOT NULL
+)
+
+CREATE TABLE Account
+(
+	userName VARCHAR(50) PRIMARY KEY,
+	passWordUser VARCHAR(50) NOT NULL,
+	style BIT NOT NULL
+)
+
+CREATE TABLE FoodCategory
+(
+	idFoodCategory INT IDENTITY PRIMARY KEY,
+	nameFoodCategory NVARCHAR(50) NOT NULL
+)
+
+CREATE TABLE Food
+(
+	idFood INT IDENTITY PRIMARY KEY,
+	nameFood NVARCHAR(50) NOT NULL,
+	price MONEY NOT NULL,
+	idFoodCategory INT
+	FOREIGN KEY(idFoodCategory)REFERENCES dbo.FoodCategory(idFoodCategory)
+)
+
+CREATE TABLE Bill
+(
+	idBill INT IDENTITY PRIMARY KEY,
+	dateCheckIn DATE,
+	dateCheckOUt DATE,
+	discount INT ,
+	idTable INT
+	FOREIGN KEY(idTable) REFERENCES dbo.TableFood(idTable)
+)
+
+CREATE TABLE BillInfo
+(
+	idBillInfo INT PRIMARY KEY,
+	idBill INT ,
+	idFood INT,
+	FOREIGN KEY(idBill) REFERENCES dbo.Bill(idBill),
+	FOREIGN KEY(idFood) REFERENCES dbo.Food(idFood)
+)
+--May Bàn
+QUOC-PC\QUOCDO
+--LAP TOP
+
