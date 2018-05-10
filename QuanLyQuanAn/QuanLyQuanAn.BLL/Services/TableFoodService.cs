@@ -15,7 +15,7 @@ namespace QuanLyQuanAn.BLL.Services
         }
    
 
-        IEnumerable<TableFood> ITableFoodService.GetTableFoods()
+        public IEnumerable<TableFood> GetTableFoods()
         {
             return tableRepository.GetTableFoods();
         }
