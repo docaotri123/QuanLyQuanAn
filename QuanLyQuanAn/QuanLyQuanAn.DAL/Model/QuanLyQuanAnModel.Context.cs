@@ -12,6 +12,8 @@ namespace QuanLyQuanAn.DAL.Model
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class QuanLyQuanAnEntities : DbContext
     {
@@ -31,5 +33,14 @@ namespace QuanLyQuanAn.DAL.Model
         public virtual DbSet<Food> Foods { get; set; }
         public virtual DbSet<FoodCategory> FoodCategories { get; set; }
         public virtual DbSet<TableFood> TableFoods { get; set; }
+    
+        public virtual ObjectResult<TableFoodDetails_Result> TableFoodDetails(Nullable<int> idTable)
+        {
+            var idTableParameter = idTable.HasValue ?
+                new ObjectParameter("idTable", idTable) :
+                new ObjectParameter("idTable", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TableFoodDetails_Result>("TableFoodDetails", idTableParameter);
+        }
     }
 }

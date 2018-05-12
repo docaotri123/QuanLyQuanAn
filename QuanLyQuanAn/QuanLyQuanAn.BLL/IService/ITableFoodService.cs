@@ -10,5 +10,6 @@ namespace QuanLyQuanAn.BLL.IService
     public interface ITableFoodService
     {
         IEnumerable<TableFood> GetTableFoods();
+        IEnumerable<TableFoodDetails_Result> TableFoodDetails(int? idTable);
     }
 }

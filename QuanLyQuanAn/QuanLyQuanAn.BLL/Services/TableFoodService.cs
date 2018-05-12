@@ -19,5 +19,10 @@ namespace QuanLyQuanAn.BLL.Services
         {
             return tableRepository.GetTableFoods();
         }
+
+        public IEnumerable<TableFoodDetails_Result> TableFoodDetails(int? idTable)
+        {
+            return tableRepository.TableFoodDetails(idTable);
+        }
     }
 }

@@ -25,6 +25,7 @@ namespace QuanLyQuanAn.DAL.Model
         public Nullable<System.DateTime> dateCheckOUt { get; set; }
         public Nullable<int> discount { get; set; }
         public Nullable<int> idTable { get; set; }
+        public Nullable<bool> status { get; set; }
     
         public virtual TableFood TableFood { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

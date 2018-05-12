@@ -84,9 +84,13 @@
     <Compile Include="Model\TableFood.cs">
       <DependentUpon>QuanLyQuanAnModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\TableFoodDetails_Result.cs">
+      <DependentUpon>QuanLyQuanAnModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AccountRepository.cs" />
     <Compile Include="Repository\TableFoodRepository.cs" />
+    <Compile Include="ViewModel\TableFoodDetail.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

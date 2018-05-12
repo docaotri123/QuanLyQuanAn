@@ -39,6 +39,7 @@ BEGIN
 	SET @i=@i+1
 END
 
+--Add FoodCategory
 go
 insert into dbo.FoodCategory(nameFoodCategory)
 values(N'Hải Sản')
@@ -126,7 +127,39 @@ insert into dbo.BillInfo(idBillInfo,idBill,idFood)
 values(3,2,1)
 insert into dbo.BillInfo(idBillInfo,idBill,idFood)
 values(4,3,1)
+insert into dbo.BillInfo(idBillInfo,idBill,idFood)
+values(5,1,1)
+
+insert into dbo.BillInfo(idBill,idFood)
+values(1,1)
 
 
 SELECT *FROM dbo.Bill
 SELECT *FROM dbo.BillInfo
+SELECT *FROM TableFood
+
+---------PROC-----------------
+--PROC Display Detail TableFood
+ALTER PROC TableFoodDetails @idTable INT
+AS
+	Select tb.nameTable,f.nameFood,f.price,COUNT(bif.idBillInfo) 'count'
+	 From TableFood tb RIGHT JOIN Bill b 
+	 ON tb.idTable=b.idTable RIGHT JOIN  BillInfo bif 
+	 ON b.idBill=bif.idBill RIGHT JOIN Food f 
+	 ON f.idFood=bif.idFood
+	 Where tb.idTable=@idTable AND b.status=0
+     Group By tb.nameTable,f.nameFood,f.price
+GO
+
+EXEC TableFoodDetails 1
+
+--------------------------------
+
+--Query
+
+
+Select b.idTable,b.idBill,b.status,f.nameFood,f.price,COUNT(bif.idBillInfo) 'count' From Bill b  RIGHT JOIN  BillInfo bif ON b.idBill=bif.idBill RIGHT JOIN Food f 
+ON f.idFood=bif.idFood
+Where b.idTable=1 AND b.status=0
+Group By b.idTable,b.idBill,b.status,f.nameFood,f.price
+

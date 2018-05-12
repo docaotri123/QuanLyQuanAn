@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using QuanLyQuanAn.DAL.Model;
+using QuanLyQuanAn.DAL.ViewModel;
 
 namespace QuanLyQuanAn.DAL.Repository
 {
@@ -42,5 +43,9 @@ namespace QuanLyQuanAn.DAL.Repository
             GC.SuppressFinalize(this);
         }
 
+        public IEnumerable<TableFoodDetails_Result> TableFoodDetails(int? idTable)
+        {
+            return db.TableFoodDetails(idTable).ToList();
+        }
     }
 }

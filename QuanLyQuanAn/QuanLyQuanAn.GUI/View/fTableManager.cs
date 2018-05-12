@@ -48,7 +48,16 @@ namespace QuanLyQuanAn
 
         private void DisplayBill(int id)
         {
-            MessageBox.Show(id.ToString());
+            lsvBill.Clear();
+            var listDetail = tableFood.TableFoodDetails(id);
+            foreach(var item in listDetail)
+            {
+                ListViewItem lsvItem = new ListViewItem(item.nameFood);
+                lsvItem.SubItems.Add(item.price.ToString());
+                lsvItem.SubItems.Add(item.count.ToString());
+
+                lsvBill.Items.Add(lsvItem);
+            }
         }
 
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
@@ -68,9 +77,6 @@ namespace QuanLyQuanAn
             admin.ShowDialog();
         }
 
-        private void flpTable_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+       
     }
 }
