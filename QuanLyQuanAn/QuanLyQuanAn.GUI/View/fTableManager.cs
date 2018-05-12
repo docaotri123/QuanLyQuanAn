@@ -3,6 +3,8 @@ using QuanLyQuanAn.BLL.Services;
 using QuanLyQuanAn.DAL.Model;
 using System;
 using System.Drawing;
+using System.Globalization;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace QuanLyQuanAn
@@ -10,6 +12,9 @@ namespace QuanLyQuanAn
     public partial class fTableManager : Form
     {
         TableFoodService tableFood = new TableFoodService();
+        FoodCategoryService foodCategory = new FoodCategoryService();
+        FoodService food = new FoodService();
+        BillService bill = new BillService();
         
         
         public fTableManager()
@@ -43,21 +48,36 @@ namespace QuanLyQuanAn
         private void btn_Click(object sender, EventArgs e)
         {
             int idTable = ((sender as Button).Tag as TableFood).idTable;
+            lsvBill.Tag = (sender as Button).Tag;
             DisplayBill(idTable);
+            LoadFoodCategories();
         }
 
         private void DisplayBill(int id)
         {
             lsvBill.Items.Clear();
             var listDetail = tableFood.TableFoodDetails(id);
-            foreach(var item in listDetail)
+            int Total = 0;
+            CultureInfo culture = new CultureInfo("vi-VN");
+            foreach (var item in listDetail)
             {
                 ListViewItem lsvItem = new ListViewItem(item.nameFood);
-                lsvItem.SubItems.Add(item.price.ToString());
+                int Price =(int) item.price;
+                lsvItem.SubItems.Add(Price.ToString());
                 lsvItem.SubItems.Add(item.count.ToString());
-
+                int TotalPrice =(int) (item.count * item.price);
+                lsvItem.SubItems.Add(TotalPrice.ToString());
+                Total += TotalPrice;
                 lsvBill.Items.Add(lsvItem);
             }
+            //CultureInfo culture = new CultureInfo("en-US");
+            //Thread.CurrentThread.CurrentCulture = culture;
+           
+            if (Total > 0)
+                txbTotalPrice.Text = Total.ToString("c",culture);
+            else
+                txbTotalPrice.Text = "";
+
         }
 
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
@@ -75,6 +95,46 @@ namespace QuanLyQuanAn
         {
             fAdmin admin = new fAdmin();
             admin.ShowDialog();
+        }
+
+        private void cbCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int id = 0;
+            ComboBox cb = sender as ComboBox;
+            if (cb.SelectedItem == null)
+                return;
+
+            FoodCategory selected = cb.SelectedItem as FoodCategory;
+            id = selected.idFoodCategory;
+
+            LoadFoodbyCategory(id);
+        }
+
+        private void LoadFoodCategories()
+        {
+            var listCategory = foodCategory.GetFoodCategories();
+            cbCategory.DataSource = listCategory;
+            cbCategory.DisplayMember = "nameFoodCategory";
+        }
+
+        private void LoadFoodbyCategory(int? id)
+        {
+            var listFood = food.GetFoodByCategory(id);
+            cbFood.DataSource = listFood;
+            cbFood.DisplayMember = "nameFood";
+        }
+
+        private void btnAddFood_Click(object sender, EventArgs e)
+        {
+            //TableFood table = lsvBill.Tag as TableFood;
+            //int idTable = (lsvBill.Tag as TableFood).idTable;
+            int idTable = (lsvBill.Tag as TableFood).idTable;
+            string status = (lsvBill.Tag as TableFood).statusTable;
+            if (idTable!=null && status!="Trống")
+            {
+                int? idBill = bill.GetIdBillByTable(idTable).idBill;
+                MessageBox.Show(idBill.ToString());
+            } 
         }
 
         //private void flpTable_Paint(object sender, PaintEventArgs e)

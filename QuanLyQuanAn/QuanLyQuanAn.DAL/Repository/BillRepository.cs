@@ -1,30 +1,27 @@
 ﻿using QuanLyQuanAn.DAL.IRepository;
+using QuanLyQuanAn.DAL.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using QuanLyQuanAn.DAL.Model;
-using QuanLyQuanAn.DAL.ViewModel;
 
 namespace QuanLyQuanAn.DAL.Repository
 {
-    public class TableFoodRepository : ITableFoodRepository, IDisposable
+    public class BillRepository : IBillRepository, IDisposable
     {
-        private readonly QuanLyQuanAnEntities db;
         private bool disposed;
-
-        public TableFoodRepository(QuanLyQuanAnEntities _db)
+        private readonly QuanLyQuanAnEntities db;
+        public BillRepository(QuanLyQuanAnEntities _db)
         {
-            db = _db;
+            this.db = _db;
         }
 
- 
-        public IEnumerable<TableFood> GetTableFoods()
-        {
-            return db.TableFoods.ToList();
-        }
 
+        public Bill GetIdBillByTable(int? idTable)
+        {
+            return db.Bills.FirstOrDefault(m => m.idTable == idTable);
+        }
         protected virtual void Dispose(bool disposing)
         {
             if (!this.disposed)
@@ -42,11 +39,5 @@ namespace QuanLyQuanAn.DAL.Repository
             Dispose(true);
             GC.SuppressFinalize(this);
         }
-
-        public IEnumerable<TableFoodDetails_Result> TableFoodDetails(int? idTable)
-        {
-            return db.TableFoodDetails(idTable).ToList();
-        }
-
     }
 }

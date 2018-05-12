@@ -5,26 +5,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using QuanLyQuanAn.DAL.Model;
-using QuanLyQuanAn.DAL.ViewModel;
 
 namespace QuanLyQuanAn.DAL.Repository
 {
-    public class TableFoodRepository : ITableFoodRepository, IDisposable
+    public class FoodCategoryRepository : IFoodCategoryRepository, IDisposable
     {
         private readonly QuanLyQuanAnEntities db;
         private bool disposed;
 
-        public TableFoodRepository(QuanLyQuanAnEntities _db)
+        public FoodCategoryRepository(QuanLyQuanAnEntities _db)
         {
-            db = _db;
+            this.db = _db;
         }
 
- 
-        public IEnumerable<TableFood> GetTableFoods()
+        public IEnumerable<FoodCategory> GetFoodCategories()
         {
-            return db.TableFoods.ToList();
+            return db.FoodCategories.ToList();
         }
-
         protected virtual void Dispose(bool disposing)
         {
             if (!this.disposed)
@@ -42,11 +39,5 @@ namespace QuanLyQuanAn.DAL.Repository
             Dispose(true);
             GC.SuppressFinalize(this);
         }
-
-        public IEnumerable<TableFoodDetails_Result> TableFoodDetails(int? idTable)
-        {
-            return db.TableFoodDetails(idTable).ToList();
-        }
-
     }
 }

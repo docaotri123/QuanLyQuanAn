@@ -38,7 +38,10 @@
             this.nameFood = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.price = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.count = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.TotalPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txbTotalPrice = new System.Windows.Forms.TextBox();
             this.cbMoveTable = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.numDiscount = new System.Windows.Forms.NumericUpDown();
@@ -112,7 +115,8 @@
             this.lsvBill.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.nameFood,
             this.price,
-            this.count});
+            this.count,
+            this.TotalPrice});
             this.lsvBill.GridLines = true;
             this.lsvBill.Location = new System.Drawing.Point(4, 3);
             this.lsvBill.Name = "lsvBill";
@@ -124,19 +128,25 @@
             // nameFood
             // 
             this.nameFood.Text = "Tên món";
-            this.nameFood.Width = 100;
+            this.nameFood.Width = 90;
             // 
             // price
             // 
             this.price.Text = "Giá";
-            this.price.Width = 100;
+            this.price.Width = 80;
             // 
             // count
             // 
             this.count.Text = "Số lượng";
             // 
+            // TotalPrice
+            // 
+            this.TotalPrice.Text = "Tổng tiền";
+            // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Controls.Add(this.txbTotalPrice);
             this.panel3.Controls.Add(this.cbMoveTable);
             this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.numDiscount);
@@ -146,6 +156,23 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(309, 55);
             this.panel3.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(82, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Tổng tiền";
+            // 
+            // txbTotalPrice
+            // 
+            this.txbTotalPrice.Location = new System.Drawing.Point(85, 31);
+            this.txbTotalPrice.Name = "txbTotalPrice";
+            this.txbTotalPrice.ReadOnly = true;
+            this.txbTotalPrice.Size = new System.Drawing.Size(68, 20);
+            this.txbTotalPrice.TabIndex = 7;
             // 
             // cbMoveTable
             // 
@@ -225,6 +252,7 @@
             this.btnAddFood.TabIndex = 2;
             this.btnAddFood.Text = "Thêm món";
             this.btnAddFood.UseVisualStyleBackColor = true;
+            this.btnAddFood.Click += new System.EventHandler(this.btnAddFood_Click);
             // 
             // cbFood
             // 
@@ -241,6 +269,7 @@
             this.cbCategory.Name = "cbCategory";
             this.cbCategory.Size = new System.Drawing.Size(161, 21);
             this.cbCategory.TabIndex = 0;
+            this.cbCategory.SelectedIndexChanged += new System.EventHandler(this.cbCategory_SelectedIndexChanged);
             // 
             // flpTable
             // 
@@ -268,6 +297,7 @@
             this.menuStrip1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numDiscount)).EndInit();
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numFoodCount)).EndInit();
@@ -300,5 +330,8 @@
         private System.Windows.Forms.ColumnHeader nameFood;
         private System.Windows.Forms.ColumnHeader price;
         private System.Windows.Forms.ColumnHeader count;
+        private System.Windows.Forms.ColumnHeader TotalPrice;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txbTotalPrice;
     }
 }
