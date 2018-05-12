@@ -48,7 +48,7 @@ namespace QuanLyQuanAn
 
         private void DisplayBill(int id)
         {
-            lsvBill.Clear();
+            lsvBill.Items.Clear();
             var listDetail = tableFood.TableFoodDetails(id);
             foreach(var item in listDetail)
             {
@@ -77,6 +77,9 @@ namespace QuanLyQuanAn
             admin.ShowDialog();
         }
 
-       
+        //private void flpTable_Paint(object sender, PaintEventArgs e)
+        //{
+
+        //}
     }
 }
