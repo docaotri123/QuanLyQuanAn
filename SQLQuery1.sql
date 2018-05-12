@@ -39,6 +39,94 @@ BEGIN
 	SET @i=@i+1
 END
 
+go
+insert into dbo.FoodCategory(nameFoodCategory)
+values(N'Hải Sản')
+go
+insert into dbo.FoodCategory(nameFoodCategory)
+values(N'Món Nướng')
+go
+insert into dbo.FoodCategory(nameFoodCategory)
+values(N'Món Lẩu')
+go
+go
+insert into dbo.FoodCategory(nameFoodCategory)
+values(N'Món Chay')
+go
+insert into dbo.FoodCategory(nameFoodCategory)
+values(N'Món khác')
+
+--Thêm món ăn
+insert into dbo.Food(nameFood,price,idFoodCategory)
+values(N'Tôm hấp bia',90000,1)
+insert into dbo.Food(nameFood,price,idFoodCategory)
+values(N'Mực xào ớt xanh',80000,1)
+insert into dbo.Food(nameFood,price,idFoodCategory)
+values(N'Hàu tái chanh',120000,1)
+
+insert into dbo.Food(nameFood,price,idFoodCategory)
+values(N'Vịt nướng chao',110000,2)
+insert into dbo.Food(nameFood,price,idFoodCategory)
+values(N'Vú heo nướng sa tế',70000,2)
+insert into dbo.Food(nameFood,price,idFoodCategory)
+values(N'Sườn nướng mật ong',120000,2)
+
+insert into dbo.Food(nameFood,price,idFoodCategory)
+values(N'Lẩu chao vịt',150000,3)
+insert into dbo.Food(nameFood,price,idFoodCategory)
+values(N'Lẩu thập cẩm',160000,3)
+insert into dbo.Food(nameFood,price,idFoodCategory)
+values(N'Lẩu gà lá giang',140000,3)
+
+insert into dbo.Food(nameFood,price,idFoodCategory)
+values(N'đậu hũ chiên',30000,4)
+insert into dbo.Food(nameFood,price,idFoodCategory)
+values(N'Rau thập cẩm luộc',40000,4)
+insert into dbo.Food(nameFood,price,idFoodCategory)
+values(N'Đùi gà chay chiên',45000,4)
+
+insert into dbo.Food(nameFood,price,idFoodCategory)
+values(N'Cơm chiên cá mặn',90000,5)
+insert into dbo.Food(nameFood,price,idFoodCategory)
+values(N'Mì xào thập cẩm',75000,5)
+insert into dbo.Food(nameFood,price,idFoodCategory)
+values(N'Cháo vịt',69000,5)
 
 
-SELECT *FROM dbo.TableFood
+--thêm bill
+insert into dbo.Bill(dateCheckIn, dateCheckOUt, discount,idTable)
+values(
+	GETDATE(),
+	null,
+	10000,
+	1
+)
+
+insert into dbo.Bill(dateCheckIn, dateCheckOUt, discount,idTable)
+values(
+	GETDATE(),
+	null,
+	14000,
+	2
+)
+
+insert into dbo.Bill(dateCheckIn, dateCheckOUt, discount,idTable)
+values(
+	GETDATE(),
+	GETDATE(),
+	12000,
+	3
+)
+
+insert into dbo.BillInfo(idBillInfo,idBill,idFood)
+values(1,1,1)
+insert into dbo.BillInfo(idBillInfo,idBill,idFood)
+values(2,1,2)
+insert into dbo.BillInfo(idBillInfo,idBill,idFood)
+values(3,2,1)
+insert into dbo.BillInfo(idBillInfo,idBill,idFood)
+values(4,3,1)
+
+
+SELECT *FROM dbo.Bill
+SELECT *FROM dbo.BillInfo
