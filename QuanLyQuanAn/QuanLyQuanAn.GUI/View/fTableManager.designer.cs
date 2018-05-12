@@ -106,11 +106,13 @@
             // 
             // lsvBill
             // 
+            this.lsvBill.GridLines = true;
             this.lsvBill.Location = new System.Drawing.Point(4, 3);
             this.lsvBill.Name = "lsvBill";
             this.lsvBill.Size = new System.Drawing.Size(303, 191);
             this.lsvBill.TabIndex = 0;
             this.lsvBill.UseCompatibleStateImageBehavior = false;
+            this.lsvBill.View = System.Windows.Forms.View.List;
             // 
             // panel3
             // 

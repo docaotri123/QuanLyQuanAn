@@ -1,5 +1,6 @@
 ﻿
 using QuanLyQuanAn.BLL.Services;
+using QuanLyQuanAn.DAL.Model;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -26,6 +27,9 @@ namespace QuanLyQuanAn
             {
                 Button btn = new Button() { Width = x, Height = y };
                 btn.Text = item.nameTable+Environment.NewLine+item.statusTable;
+                btn.Click += btn_Click;
+                btn.Tag = item;
+
                 if (item.statusTable == "Trống")
                 {
                     btn.BackColor = Color.Green;
@@ -34,6 +38,17 @@ namespace QuanLyQuanAn
                     btn.BackColor = Color.White;
                 flpTable.Controls.Add(btn);
             }
+        }
+
+        private void btn_Click(object sender, EventArgs e)
+        {
+            int idTable = ((sender as Button).Tag as TableFood).idTable;
+            DisplayBill(idTable);
+        }
+
+        private void DisplayBill(int id)
+        {
+            MessageBox.Show(id.ToString());
         }
 
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
