@@ -139,8 +139,10 @@ namespace QuanLyQuanAn
             if (status!="Trống")
             {
                 //Bàn đả đặt =>Them BillInfo
-                int? idBill = bill.GetIdBillByTable(idTable).idBill;
-               // bill.SetStatusBill(idBill, false);//thu
+                //   int? idBill = bill.GetIdBillByTable(idTable).idBill;
+                //trien
+                int? idBill = bill.GetIdBillByTableAndStatusBill(idTable,false).idBill;
+                //trien
                 for (int i = 0; i < countFood; i++)
                 {
                     billInfo.InsertFoodIntoBillInfo(idBill, idFood);
@@ -157,7 +159,10 @@ namespace QuanLyQuanAn
                 DateTime? datetime = DateTime.Now;
                 DateTime? datetimeOut = null;
                 bill.InsertBillIntoTable(idTable, datetime, datetimeOut, 11000, false);
-                int? idBill = bill.GetIdBillByTable(idTable).idBill;
+                //int? idBill = bill.GetIdBillByTable(idTable).idBill;
+                //trien
+                int? idBill = bill.GetIdBillByTableAndStatusBill(idTable,false).idBill;
+                //trien
                 for (int i = 0; i < countFood; i++)
                 {
                     billInfo.InsertFoodIntoBillInfo(idBill, idFood);
@@ -176,7 +181,10 @@ namespace QuanLyQuanAn
             if (status != "Trống")
             {
                 //Bàn đả đặt => Cap nhat trang thai ban, Bill
-                int? idBill = bill.GetIdBillByTable(idTable).idBill;
+                //int? idBill = bill.GetIdBillByTable(idTable).idBill;
+                //trien
+                int? idBill = bill.GetIdBillByTableAndStatusBill(idTable,false).idBill;
+                //trien
                 bill.SetStatusBill(idBill, true);
                 tableFood.SetStatusTable(idTable, "Trống");
                 lsvBill.Items.Clear();

@@ -18,6 +18,11 @@ namespace QuanLyQuanAn.BLL.Services
             return billRepository.GetIdBillByTable(idTable);
         }
 
+        public Bill GetIdBillByTableAndStatusBill(int? idTable, bool status)
+        {
+            return billRepository.GetIdBillByTableAndStatusBill(idTable,status);
+        }
+
         public void InsertBillIntoTable(int? idTable, DateTime? dateCheckIn, DateTime? DateCheckOut, int Discount, bool status)
         {
             billRepository.InsertBillIntoTable(idTable, dateCheckIn, DateCheckOut, Discount, status);

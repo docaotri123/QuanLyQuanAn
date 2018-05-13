@@ -22,6 +22,13 @@ namespace QuanLyQuanAn.DAL.Repository
         {
             return db.Bills.FirstOrDefault(m => m.idTable == idTable);
         }
+
+        //trien
+        public Bill GetIdBillByTableAndStatusBill(int? idTable, bool status)
+        {
+            return db.Bills.FirstOrDefault(m => m.idTable == idTable && m.status == status);
+        }
+        //trien
         protected virtual void Dispose(bool disposing)
         {
             if (!this.disposed)
@@ -63,5 +70,7 @@ namespace QuanLyQuanAn.DAL.Repository
                 db.SaveChanges();
             }
         }
+
+        
     }
 }
