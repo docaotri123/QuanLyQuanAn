@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\Tri\PTTK\QuanLyQuanAn\QuanLyQuanAn\QuanLyQuanAn.DAL\Model\QuanLyQuanAnModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\admin\Desktop\PhanTTK\QuanLyQuanAn\QuanLyQuanAn\QuanLyQuanAn.DAL\Model\QuanLyQuanAnModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

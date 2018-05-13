@@ -15,7 +15,7 @@ namespace QuanLyQuanAn
         FoodCategoryService foodCategory = new FoodCategoryService();
         FoodService food = new FoodService();
         BillService bill = new BillService();
-        
+        BillInfoService billInfo = new BillInfoService();
         
         public fTableManager()
         {
@@ -130,11 +130,66 @@ namespace QuanLyQuanAn
             //int idTable = (lsvBill.Tag as TableFood).idTable;
             int idTable = (lsvBill.Tag as TableFood).idTable;
             string status = (lsvBill.Tag as TableFood).statusTable;
-            if (idTable!=null && status!="Trống")
+            int? idFood = (cbFood.SelectedItem as Food).idFood;
+            int? countFood = (int)(numFoodCount.Value);
+            if(countFood<=0)
             {
+                countFood = 1;
+            }
+            if (status!="Trống")
+            {
+                //Bàn đả đặt =>Them BillInfo
                 int? idBill = bill.GetIdBillByTable(idTable).idBill;
-                MessageBox.Show(idBill.ToString());
-            } 
+               // bill.SetStatusBill(idBill, false);//thu
+                for (int i = 0; i < countFood; i++)
+                {
+                    billInfo.InsertFoodIntoBillInfo(idBill, idFood);
+                }
+                lsvBill.Items.Clear();
+                flpTable.Controls.Clear();
+                DisplayBill(idTable);
+                LoadTable();
+            }
+            else
+            {
+                //Bàn trống=>Tạo moi Bill =>Them BillInfo
+                tableFood.SetStatusTable(idTable, "Đã Đặt");
+                DateTime? datetime = DateTime.Now;
+                DateTime? datetimeOut = null;
+                bill.InsertBillIntoTable(idTable, datetime, datetimeOut, 11000, false);
+                int? idBill = bill.GetIdBillByTable(idTable).idBill;
+                for (int i = 0; i < countFood; i++)
+                {
+                    billInfo.InsertFoodIntoBillInfo(idBill, idFood);
+                }
+                lsvBill.Items.Clear();
+                flpTable.Controls.Clear();
+                DisplayBill(idTable);
+                LoadTable();
+            }
+        }
+
+        private void btnCheckOut_Click(object sender, EventArgs e)
+        {
+            int idTable = (lsvBill.Tag as TableFood).idTable;
+            string status = (lsvBill.Tag as TableFood).statusTable;
+            if (status != "Trống")
+            {
+                //Bàn đả đặt => Cap nhat trang thai ban, Bill
+                int? idBill = bill.GetIdBillByTable(idTable).idBill;
+                bill.SetStatusBill(idBill, true);
+                tableFood.SetStatusTable(idTable, "Trống");
+                lsvBill.Items.Clear();
+                flpTable.Controls.Clear();
+                DisplayBill(idTable);
+                LoadTable();
+
+            }
+            else
+            {
+                //ban trong => xuat thong bao ban trong
+                MessageBox.Show("Ban trong khong thanh toan");
+            }
         }
 
         //private void flpTable_Paint(object sender, PaintEventArgs e)

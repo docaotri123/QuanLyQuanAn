@@ -3,25 +3,30 @@ using QuanLyQuanAn.DAL.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace QuanLyQuanAn.DAL.Repository
 {
-    public class AccountRepository : IAccountRepository, IDisposable
+    public class BillInfoRepository : IBillInfoRepository, IDisposable
     {
+        private bool disposed;
         private readonly QuanLyQuanAnEntities db;
-        public AccountRepository(QuanLyQuanAnEntities _db)
+        public BillInfoRepository(QuanLyQuanAnEntities _db)
         {
             this.db = _db;
         }
 
-        public IEnumerable<Account> GetAccounts()
+        public void InsertFoodIntoBillInfo(int? idBill, int? idFood)
         {
-            return db.Accounts.ToList();
-            
+            BillInfo x = new BillInfo();
+            x.idBill = idBill;
+            x.idFood = idFood;
+            db.BillInfoes.Add(x);
+            db.SaveChanges();
         }
-        private bool disposed = false;
-
-        protected virtual void Dispose(bool disposing)
+       
+         protected virtual void Dispose(bool disposing)
         {
             if (!this.disposed)
             {
@@ -33,18 +38,10 @@ namespace QuanLyQuanAn.DAL.Repository
             this.disposed = true;
         }
 
-
         public void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
-        }
-
-        public bool Login(string userName, string password)
-        {
-            if (db.Accounts.FirstOrDefault(m => m.userName.Equals(userName) && m.passWordUser.Equals(password))!=null)
-                return true;
-            return true;
         }
 
     }

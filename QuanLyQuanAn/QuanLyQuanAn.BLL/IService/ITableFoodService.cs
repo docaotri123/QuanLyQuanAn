@@ -11,5 +11,7 @@ namespace QuanLyQuanAn.BLL.IService
     {
         IEnumerable<TableFood> GetTableFoods();
         IEnumerable<TableFoodDetails_Result> TableFoodDetails(int? idTable);
+        void SetStatusTable(int? idTable, string status);
+
     }
 }

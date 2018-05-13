@@ -48,5 +48,14 @@ namespace QuanLyQuanAn.DAL.Repository
             return db.TableFoodDetails(idTable).ToList();
         }
 
+        public void SetStatusTable(int? idTable, string status)
+        {
+            var result = db.TableFoods.SingleOrDefault(m => m.idTable == idTable);
+            if (result != null)
+            {
+                result.statusTable = status;
+                db.SaveChanges();
+            }
+        }
     }
 }

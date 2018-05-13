@@ -39,5 +39,29 @@ namespace QuanLyQuanAn.DAL.Repository
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+
+        public void InsertBillIntoTable(int? idTable, DateTime? dateCheckIn, DateTime? DateCheckOut, int Discount, bool status)
+        {
+            Bill x = new Bill();
+            x.dateCheckIn = dateCheckIn;
+            x.dateCheckOUt = DateCheckOut;
+            x.discount = Discount;
+            x.status = status;
+            x.idTable = idTable;
+            db.Bills.Add(x);
+            db.SaveChanges();
+
+        }
+
+        public void SetStatusBill(int? idBill, bool status)
+        {
+            var result = db.Bills.SingleOrDefault(m => m.idBill == idBill);
+
+            if (result != null)
+            {
+                result.status = status;
+                db.SaveChanges();
+            }
+        }
     }
 }

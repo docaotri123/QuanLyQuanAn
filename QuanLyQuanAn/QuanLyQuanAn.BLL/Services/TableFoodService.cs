@@ -20,6 +20,11 @@ namespace QuanLyQuanAn.BLL.Services
             return tableRepository.GetTableFoods();
         }
 
+        public void SetStatusTable(int? idTable, string status)
+        {
+            tableRepository.SetStatusTable(idTable, status);
+        }
+
         public IEnumerable<TableFoodDetails_Result> TableFoodDetails(int? idTable)
         {
             return tableRepository.TableFoodDetails(idTable);
