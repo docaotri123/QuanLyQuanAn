@@ -12,5 +12,10 @@ namespace QuanLyQuanAn.BLL.IService
     {
         IEnumerable<Account> GetAccounts();
         bool Login(string userName, string password);
+        Account GetAccountByUserName(string userName);
+        bool UpdateAccount(string userName, string newPassword);
+
+
+
     }
 }

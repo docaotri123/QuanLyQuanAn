@@ -14,15 +14,28 @@ namespace QuanLyQuanAn.BLL
         {
             this.accountRepository = new AccountRepository(new QuanLyQuanAnEntities());
         }
+
+        public Account GetAccountByUserName(string userName)
+        {
+            return accountRepository.GetAccountByUserName(userName);
+        }
+
         public IEnumerable<Account> GetAccounts()
         {
             return accountRepository.GetAccounts();
         }
+
+        
+
         public bool Login(string userName, string password)
         {
             return accountRepository.Login(userName,password);
         }
 
+        public bool UpdateAccount(string userName, string newPassword)
+        {
+            return accountRepository.UpdateAccount(userName, newPassword);
+        }
     }
 
 }

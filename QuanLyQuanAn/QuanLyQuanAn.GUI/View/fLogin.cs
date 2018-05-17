@@ -41,7 +41,15 @@ namespace QuanLyQuanAn
         {
             if(Login(txbUserName.Text,txbPassword.Text))
             {
-                fTableManager table = new fTableManager();
+                //AccountService account = new AccountService();
+                //account.GetAccountByUserName(txbUserName.Text);
+                //int temp = 0;
+                //if (txbUserName.Text == "trido123")
+                //{
+                //    temp = 1;
+                //}
+
+                fTableManager table = new fTableManager(txbUserName.Text,txbPassword.Text);
                 this.Hide();
                 table.ShowDialog();
                 this.Show();

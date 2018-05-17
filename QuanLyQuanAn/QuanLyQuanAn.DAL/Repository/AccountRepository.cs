@@ -44,8 +44,27 @@ namespace QuanLyQuanAn.DAL.Repository
         {
             if (db.Accounts.FirstOrDefault(m => m.userName.Equals(userName) && m.passWordUser.Equals(password))!=null)
                 return true;
-            return true;
+            return false;
         }
 
+        public Account GetAccountByUserName(string userName)
+        {
+            return db.Accounts.FirstOrDefault(m => m.userName.Equals(userName));
+        }
+
+        public bool UpdateAccount(string userName, string newPassword)
+        {
+            var result = db.Accounts.SingleOrDefault(m => m.userName==userName);
+            if(result!=null)
+            {
+                result.passWordUser = newPassword;
+                db.SaveChanges();
+            }
+            else
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿
+using QuanLyQuanAn.BLL;
 using QuanLyQuanAn.BLL.Services;
 using QuanLyQuanAn.DAL.Model;
 using System;
@@ -17,10 +18,26 @@ namespace QuanLyQuanAn
         BillService bill = new BillService();
         BillInfoService billInfo = new BillInfoService();
         
-        public fTableManager()
+        string userName;
+        string passWord;
+        public fTableManager(string s1, string s2)
         {
+            userName = s1;
+            passWord = s2;
             InitializeComponent();
             LoadTable();
+           
+            
+            if(s1!="admin")
+            {
+                adminToolStripMenuItem.Enabled = false;
+            }
+            else
+            {
+                adminToolStripMenuItem.Enabled = true;
+
+            }
+            thôngTinTàiKhoảnToolStripMenuItem.Text += " (" + userName + ")";
         }
         
         private void LoadTable()
@@ -87,13 +104,15 @@ namespace QuanLyQuanAn
 
         private void thôngTinCáNhânToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            fAccountProfile profile = new fAccountProfile();
+            fAccountProfile profile = new fAccountProfile(userName,passWord);
+
             profile.ShowDialog();
         }
 
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
         {
             fAdmin admin = new fAdmin();
+            //admin.Enabled = true;
             admin.ShowDialog();
         }
 
@@ -198,6 +217,16 @@ namespace QuanLyQuanAn
                 //ban trong => xuat thong bao ban trong
                 MessageBox.Show("Ban trong khong thanh toan");
             }
+        }
+
+        private void txbTotalPrice_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void thôngTinTàiKhoảnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
         }
 
         //private void flpTable_Paint(object sender, PaintEventArgs e)
