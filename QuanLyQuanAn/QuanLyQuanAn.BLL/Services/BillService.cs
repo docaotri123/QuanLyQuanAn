@@ -33,9 +33,9 @@ namespace QuanLyQuanAn.BLL.Services
             billRepository.SetIdTableBill(idBill, idTable);
         }
 
-        public void SetStatusBill(int? idBill, bool status)
+        public void SetStatusBill(int? idBill, bool status, int? discount, int? totalPrice)
         {
-            billRepository.SetStatusBill(idBill, status);
+            billRepository.SetStatusBill(idBill, status, discount, totalPrice);
         }
     }
 }

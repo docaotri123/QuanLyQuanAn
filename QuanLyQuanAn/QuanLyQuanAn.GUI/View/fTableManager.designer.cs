@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thôngTinTàiKhoảnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,6 +54,7 @@
             this.cbFood = new System.Windows.Forms.ComboBox();
             this.cbCategory = new System.Windows.Forms.ComboBox();
             this.flpTable = new System.Windows.Forms.FlowLayoutPanel();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -236,11 +238,16 @@
             // numFoodCount
             // 
             this.numFoodCount.Location = new System.Drawing.Point(247, 4);
+            this.numFoodCount.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.numFoodCount.Minimum = new decimal(new int[] {
-            100,
+            1,
             0,
             0,
-            -2147483648});
+            0});
             this.numFoodCount.Name = "numFoodCount";
             this.numFoodCount.Size = new System.Drawing.Size(57, 20);
             this.numFoodCount.TabIndex = 3;
@@ -286,6 +293,11 @@
             this.flpTable.Size = new System.Drawing.Size(321, 322);
             this.flpTable.TabIndex = 5;
             this.flpTable.Paint += new System.Windows.Forms.PaintEventHandler(this.flpTable_Paint);
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
             // 
             // fTableManager
             // 
@@ -341,5 +353,6 @@
         private System.Windows.Forms.ColumnHeader TotalPrice;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txbTotalPrice;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }

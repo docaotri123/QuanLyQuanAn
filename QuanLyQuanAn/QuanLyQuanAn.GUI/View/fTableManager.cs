@@ -162,6 +162,7 @@ namespace QuanLyQuanAn
         {
             //TableFood table = lsvBill.Tag as TableFood;
             //int idTable = (lsvBill.Tag as TableFood).idTable;
+            numDiscount.Value = 1;
             int idTable = (lsvBill.Tag as TableFood).idTable;
             string status = (lsvBill.Tag as TableFood).statusTable;
             int? idFood = (cbFood.SelectedItem as Food).idFood;
@@ -219,8 +220,22 @@ namespace QuanLyQuanAn
                 //trien
                 int? idBill = bill.GetIdBillByTableAndStatusBill(idTable,false).idBill;
                 //trien
-                bill.SetStatusBill(idBill, true);
+                bill.SetStatusBill(idBill, false,0,0);
                 tableFood.SetStatusTable(idTable, "Trống");
+                //Total price of Bill
+                int totalPrice = 0;
+                foreach (ListViewItem item in lsvBill.Items)
+                {
+                    totalPrice += int.Parse(item.SubItems[3].Text);
+                }
+                float discount = float.Parse(numDiscount.Value.ToString());
+
+                discount /= 100;
+                totalPrice -= (int)(discount * totalPrice);
+
+                CultureInfo culture = new CultureInfo("vi-VN");
+                MessageBox.Show(totalPrice.ToString("c", culture));
+                 bill.SetStatusBill(idBill, true, (int)(discount * 100), totalPrice);
                 lsvBill.Items.Clear();
                 flpTable.Controls.Clear();
                 DisplayBill(idTable);

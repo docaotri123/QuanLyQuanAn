@@ -60,23 +60,25 @@ namespace QuanLyQuanAn.DAL.Repository
 
         }
 
-        public void SetStatusBill(int? idBill, bool status)
-        {
-            var result = db.Bills.SingleOrDefault(m => m.idBill == idBill);
-
-            if (result != null)
-            {
-                result.statusBill = status;
-                db.SaveChanges();
-            }
-        }
-
         public void SetIdTableBill(int? idBill, int? idTable)
         {
             var result = db.Bills.SingleOrDefault(m => m.idBill == idBill);
             if(result!=null)
             {
                 result.idTable = idTable;
+                db.SaveChanges();
+            }
+        }
+
+        public void SetStatusBill(int? idBill, bool status, int? discount, int? totalPrice)
+        {
+            var result = db.Bills.SingleOrDefault(m => m.idBill == idBill);
+
+            if (result != null)
+            {
+                result.statusBill = status;
+                result.discount = discount;
+                result.totalPrice = totalPrice;
                 db.SaveChanges();
             }
         }
