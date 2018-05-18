@@ -38,5 +38,21 @@ namespace QuanLyQuanAn.DAL.Repository
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+
+        public IEnumerable<Food> GetFoods()
+        {
+            return db.Foods.ToList();
+        }
+
+        public void InsertFood(string nameFood, decimal price, int idCategory)
+        {
+            Food f = new Food();
+            f.nameFood = nameFood;
+            f.price = price;
+            f.idFoodCategory = idCategory;
+
+            db.Foods.Add(f);
+            db.SaveChanges();
+        }
     }
 }

@@ -17,18 +17,16 @@ namespace QuanLyQuanAn
         FoodService food = new FoodService();
         BillService bill = new BillService();
         BillInfoService billInfo = new BillInfoService();
-        
+
         string userName;
         string passWord;
-        public fTableManager(string s1, string s2)
+        public fTableManager(string userName,string password, bool style)
         {
-            userName = s1;
-            passWord = s2;
             InitializeComponent();
             LoadTable();
            
             
-            if(s1!="admin")
+            if(style==false)
             {
                 adminToolStripMenuItem.Enabled = false;
             }

@@ -21,5 +21,10 @@ namespace QuanLyQuanAn.BLL.Services
         {
             return foodCategory.GetFoodCategories();
         }
+
+        public int GetIDCategoryByName(string name)
+        {
+            return foodCategory.GetIDCategoryByName(name);
+        }
     }
 }

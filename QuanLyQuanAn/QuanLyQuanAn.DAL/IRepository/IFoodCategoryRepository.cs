@@ -10,5 +10,6 @@ namespace QuanLyQuanAn.DAL.IRepository
     public interface IFoodCategoryRepository
     {
         IEnumerable<FoodCategory> GetFoodCategories();
+        int GetIDCategoryByName(string name);
     }
 }

@@ -99,6 +99,7 @@
     <Compile Include="Repository\FoodRepository.cs" />
     <Compile Include="Repository\TableFoodRepository.cs" />
     <Compile Include="ViewModel\TableFoodDetail.cs" />
+    <Compile Include="ViewModel\VFood.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

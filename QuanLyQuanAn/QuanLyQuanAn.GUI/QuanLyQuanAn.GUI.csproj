@@ -62,6 +62,12 @@
     <Compile Include="View\fAccountProfile.designer.cs">
       <DependentUpon>fAccountProfile.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\fFood.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\fFood.Designer.cs">
+      <DependentUpon>fFood.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\fAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,9 @@
     </Compile>
     <EmbeddedResource Include="View\fAccountProfile.resx">
       <DependentUpon>fAccountProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\fFood.resx">
+      <DependentUpon>fFood.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\fAdmin.resx">
       <DependentUpon>fAdmin.cs</DependentUpon>

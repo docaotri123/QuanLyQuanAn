@@ -49,7 +49,10 @@ namespace QuanLyQuanAn
                 //    temp = 1;
                 //}
 
-                fTableManager table = new fTableManager(txbUserName.Text,txbPassword.Text);
+                bool style = account.GetAccountByUserName(txbUserName.Text).style;
+                
+
+                fTableManager table = new fTableManager(txbUserName.Text,txbPassword.Text,style);
                 this.Hide();
                 table.ShowDialog();
                 this.Show();

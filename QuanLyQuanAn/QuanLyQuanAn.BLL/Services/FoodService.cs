@@ -19,5 +19,15 @@ namespace QuanLyQuanAn.BLL.Services
         {
             return foodRepository.GetFoodByCategory(idCategory);
         }
+
+        public IEnumerable<Food> GetFoods()
+        {
+            return foodRepository.GetFoods();
+        }
+
+        public void InsertFood(string nameFood, decimal price, int idCategory)
+        {
+            foodRepository.InsertFood(nameFood, price, idCategory);
+        }
     }
 }

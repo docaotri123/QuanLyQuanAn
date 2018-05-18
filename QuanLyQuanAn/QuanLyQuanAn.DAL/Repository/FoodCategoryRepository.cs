@@ -39,5 +39,10 @@ namespace QuanLyQuanAn.DAL.Repository
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+
+        public int GetIDCategoryByName(string name)
+        {
+            return db.FoodCategories.FirstOrDefault(m => m.nameFoodCategory.Equals(name)).idFoodCategory;
+        }
     }
 }

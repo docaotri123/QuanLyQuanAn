@@ -10,5 +10,7 @@ namespace QuanLyQuanAn.BLL.IService
     public interface IFoodService
     {
         IEnumerable<Food> GetFoodByCategory(int? idCategory);
+        IEnumerable<Food> GetFoods();
+        void InsertFood(string nameFood, decimal price, int idCategory);
     }
 }

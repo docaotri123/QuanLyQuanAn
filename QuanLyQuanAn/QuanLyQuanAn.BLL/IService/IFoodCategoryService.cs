@@ -10,5 +10,6 @@ namespace QuanLyQuanAn.BLL.IService
     public interface IFoodCategoryService
     {
         IEnumerable<FoodCategory> GetFoodCategories();
+        int GetIDCategoryByName(string name);
     }
 }
