@@ -13,7 +13,11 @@ namespace QuanLyQuanAn.BLL.Services
         {
             this.tableRepository = new TableFoodRepository(new QuanLyQuanAnEntities());
         }
-   
+
+        public string GetStatusTable(int? idTable)
+        {
+            return tableRepository.GetStatusTable(idTable);
+        }
 
         public IEnumerable<TableFood> GetTableFoods()
         {

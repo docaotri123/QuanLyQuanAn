@@ -26,7 +26,7 @@ namespace QuanLyQuanAn.DAL.Repository
         //trien
         public Bill GetIdBillByTableAndStatusBill(int? idTable, bool status)
         {
-            return db.Bills.FirstOrDefault(m => m.idTable == idTable && m.status == status);
+            return db.Bills.FirstOrDefault(m => m.idTable == idTable && m.statusBill == status);
         }
         //trien
         protected virtual void Dispose(bool disposing)
@@ -53,7 +53,7 @@ namespace QuanLyQuanAn.DAL.Repository
             x.dateCheckIn = dateCheckIn;
             x.dateCheckOUt = DateCheckOut;
             x.discount = Discount;
-            x.status = status;
+            x.statusBill = status;
             x.idTable = idTable;
             db.Bills.Add(x);
             db.SaveChanges();
@@ -66,11 +66,19 @@ namespace QuanLyQuanAn.DAL.Repository
 
             if (result != null)
             {
-                result.status = status;
+                result.statusBill = status;
                 db.SaveChanges();
             }
         }
 
-        
+        public void SetIdTableBill(int? idBill, int? idTable)
+        {
+            var result = db.Bills.SingleOrDefault(m => m.idBill == idBill);
+            if(result!=null)
+            {
+                result.idTable = idTable;
+                db.SaveChanges();
+            }
+        }
     }
 }

@@ -13,5 +13,6 @@ namespace QuanLyQuanAn.DAL.IRepository
         Bill GetIdBillByTableAndStatusBill(int? idTable, bool status);//trien
         void InsertBillIntoTable(int? idTable, DateTime? dateCheckIn, DateTime? DateCheckOut, int Discount, bool status);
         void SetStatusBill(int? idBill, bool status);
+        void SetIdTableBill(int? idBill, int? idTable);     
     }
 }

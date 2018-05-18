@@ -68,6 +68,7 @@ namespace QuanLyQuanAn
             lsvBill.Tag = (sender as Button).Tag;
             DisplayBill(idTable);
             LoadFoodCategories();
+            LoadTableMove();
         }
 
         private void DisplayBill(int id)
@@ -136,12 +137,26 @@ namespace QuanLyQuanAn
             cbCategory.DisplayMember = "nameFoodCategory";
         }
 
+        
+
         private void LoadFoodbyCategory(int? id)
         {
             var listFood = food.GetFoodByCategory(id);
             cbFood.DataSource = listFood;
             cbFood.DisplayMember = "nameFood";
         }
+        //thu 
+        private void cbMoveTable_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+        private void LoadTableMove()
+        {
+            var listTable = tableFood.GetTableFoods();
+            cbMoveTable.DataSource = listTable;
+            cbMoveTable.DisplayMember = "nameTable";
+        }
+        //thu
 
         private void btnAddFood_Click(object sender, EventArgs e)
         {
@@ -219,6 +234,49 @@ namespace QuanLyQuanAn
             }
         }
 
+
+        //chuyen ban
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int idTable = (lsvBill.Tag as TableFood).idTable;//id bàn cần chuyển
+            int idTableMove = (cbMoveTable.SelectedItem as TableFood).idTable;//id ban chuyển đến
+            //MessageBox.Show(idTable.ToString());
+            //MessageBox.Show(idTableMove.ToString());
+            //kiểm tra trạng thái bàn
+            string s1 = tableFood.GetStatusTable(idTableMove);
+            if(idTable==idTableMove)
+            {
+                MessageBox.Show("Hai bàn trùng nhau, vui lòng chọn bàn lại");
+                return;
+            }
+            else
+            {
+                if (s1 == "Đã Đặt")
+                {
+                    MessageBox.Show("Bàn đã đặt không thể chuyển");
+                    return;
+
+                }
+            }
+           
+            string s2 = tableFood.GetStatusTable(idTable);
+            if(s2=="Trống")
+            {
+                MessageBox.Show("Bàn trống không thể chuyển");
+                return;
+
+            }
+            //kết thúc kiểm tra
+            int? idBill = bill.GetIdBillByTableAndStatusBill(idTable, false).idBill;
+            bill.SetIdTableBill(idBill, idTableMove);//chuyển bàn
+            tableFood.SetStatusTable(idTable, "Trống");
+            tableFood.SetStatusTable(idTableMove, "Đã Đặt");
+            lsvBill.Items.Clear();
+            flpTable.Controls.Clear();
+            DisplayBill(idTable);
+            LoadTable();
+        }
+
         private void txbTotalPrice_TextChanged(object sender, EventArgs e)
         {
 
@@ -228,6 +286,25 @@ namespace QuanLyQuanAn
         {
             
         }
+
+        private void cbFood_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+       
+
+        private void flpTable_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+
 
         //private void flpTable_Paint(object sender, PaintEventArgs e)
         //{

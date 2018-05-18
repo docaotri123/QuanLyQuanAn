@@ -28,6 +28,11 @@ namespace QuanLyQuanAn.BLL.Services
             billRepository.InsertBillIntoTable(idTable, dateCheckIn, DateCheckOut, Discount, status);
         }
 
+        public void SetIdTableBill(int? idBill, int? idTable)
+        {
+            billRepository.SetIdTableBill(idBill, idTable);
+        }
+
         public void SetStatusBill(int? idBill, bool status)
         {
             billRepository.SetStatusBill(idBill, status);

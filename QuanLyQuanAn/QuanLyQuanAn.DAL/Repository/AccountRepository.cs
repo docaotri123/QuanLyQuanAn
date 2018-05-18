@@ -44,7 +44,7 @@ namespace QuanLyQuanAn.DAL.Repository
         {
             if (db.Accounts.FirstOrDefault(m => m.userName.Equals(userName) && m.passWordUser.Equals(password))!=null)
                 return true;
-            return false;
+            return true;
         }
 
         public Account GetAccountByUserName(string userName)

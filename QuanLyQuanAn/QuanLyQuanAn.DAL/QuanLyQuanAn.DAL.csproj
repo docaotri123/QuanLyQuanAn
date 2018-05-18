@@ -85,15 +85,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QuanLyQuanAnModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Model\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>QuanLyQuanAnModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\sp_helpdiagrams_Result.cs">
-      <DependentUpon>QuanLyQuanAnModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\sysdiagram.cs">
-      <DependentUpon>QuanLyQuanAnModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\TableFood.cs">
       <DependentUpon>QuanLyQuanAnModel.tt</DependentUpon>
     </Compile>

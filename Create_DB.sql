@@ -33,19 +33,22 @@ CREATE TABLE Bill
 	dateCheckIn DATE,
 	dateCheckOUt DATE,
 	discount INT ,
-	idTable INT
+	idTable INT,
+	totalPrice INT,
+	statusBill bit,
 	FOREIGN KEY(idTable) REFERENCES dbo.TableFood(idTable)
 )
 
 CREATE TABLE BillInfo
 (
-	idBillInfo INT PRIMARY KEY,
+	idBillInfo INT IDENTITY PRIMARY KEY,
 	idBill INT ,
 	idFood INT,
 	FOREIGN KEY(idBill) REFERENCES dbo.Bill(idBill),
 	FOREIGN KEY(idFood) REFERENCES dbo.Food(idFood)
 )
---May BÃ n
+--May Bàn
 QUOC-PC\QUOCDO
+DESKTOP-4THQP67\SQLEXPRESS
 --LAP TOP
 

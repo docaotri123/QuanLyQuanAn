@@ -95,28 +95,31 @@ values(N'Cháo vịt',69000,5)
 
 
 --thêm bill
-insert into dbo.Bill(dateCheckIn, dateCheckOUt, discount,idTable)
+insert into dbo.Bill(dateCheckIn, dateCheckOUt, discount,idTable,statusBill)
 values(
 	GETDATE(),
 	null,
 	10000,
+	1,
 	1
 )
 
-insert into dbo.Bill(dateCheckIn, dateCheckOUt, discount,idTable)
+insert into dbo.Bill(dateCheckIn, dateCheckOUt, discount,idTable,statusBill)
 values(
 	GETDATE(),
 	null,
 	14000,
-	2
+	2,
+	1
 )
 
-insert into dbo.Bill(dateCheckIn, dateCheckOUt, discount,idTable)
+insert into dbo.Bill(dateCheckIn, dateCheckOUt, discount,idTable,statusBill)
 values(
 	GETDATE(),
 	GETDATE(),
 	12000,
-	3
+	3,
+	1
 )
 
 insert into dbo.BillInfo(idBillInfo,idBill,idFood)
@@ -157,9 +160,17 @@ EXEC TableFoodDetails 1
 
 --Query
 
+--PROC Display Detail TableFood
+Create PROC TableFoodDetails @idTable INT
+AS
+	Select tb.nameTable,f.nameFood,f.price,COUNT(bif.idBillInfo) 'count'
+	 From TableFood tb RIGHT JOIN Bill b 
+	 ON tb.idTable=b.idTable RIGHT JOIN  BillInfo bif 
+	 ON b.idBill=bif.idBill RIGHT JOIN Food f 
+	 ON f.idFood=bif.idFood
+	 Where tb.idTable=@idTable AND b.statusBill=0
+     Group By tb.nameTable,f.nameFood,f.price
+GO
 
-Select b.idTable,b.idBill,b.status,f.nameFood,f.price,COUNT(bif.idBillInfo) 'count' From Bill b  RIGHT JOIN  BillInfo bif ON b.idBill=bif.idBill RIGHT JOIN Food f 
-ON f.idFood=bif.idFood
-Where b.idTable=1 AND b.status=0
-Group By b.idTable,b.idBill,b.status,f.nameFood,f.price
+EXEC TableFoodDetails 1
 

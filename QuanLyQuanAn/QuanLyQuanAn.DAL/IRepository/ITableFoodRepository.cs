@@ -13,6 +13,7 @@ namespace QuanLyQuanAn.DAL.IRepository
         IEnumerable<TableFood> GetTableFoods();
         IEnumerable<TableFoodDetails_Result> TableFoodDetails(int? idTable);
         void SetStatusTable(int? idTable, string status);
+        string GetStatusTable(int? idTable);
 
     }
 }

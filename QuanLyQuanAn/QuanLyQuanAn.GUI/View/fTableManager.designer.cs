@@ -71,6 +71,7 @@
             this.menuStrip1.Size = new System.Drawing.Size(651, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // adminToolStripMenuItem
             // 
@@ -92,14 +93,14 @@
             // thôngTinCáNhânToolStripMenuItem
             // 
             this.thôngTinCáNhânToolStripMenuItem.Name = "thôngTinCáNhânToolStripMenuItem";
-            this.thôngTinCáNhânToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.thôngTinCáNhânToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.thôngTinCáNhânToolStripMenuItem.Text = "Thông tin cá nhân";
             this.thôngTinCáNhânToolStripMenuItem.Click += new System.EventHandler(this.thôngTinCáNhânToolStripMenuItem_Click);
             // 
             // đăngXuấtToolStripMenuItem
             // 
             this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
-            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
             this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuấtToolStripMenuItem_Click);
             // 
@@ -183,6 +184,7 @@
             this.cbMoveTable.Name = "cbMoveTable";
             this.cbMoveTable.Size = new System.Drawing.Size(73, 21);
             this.cbMoveTable.TabIndex = 2;
+            this.cbMoveTable.SelectedIndexChanged += new System.EventHandler(this.cbMoveTable_SelectedIndexChanged);
             // 
             // button1
             // 
@@ -192,6 +194,7 @@
             this.button1.TabIndex = 6;
             this.button1.Text = "Chuyển bàn";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // numDiscount
             // 
@@ -264,6 +267,7 @@
             this.cbFood.Name = "cbFood";
             this.cbFood.Size = new System.Drawing.Size(161, 21);
             this.cbFood.TabIndex = 1;
+            this.cbFood.SelectedIndexChanged += new System.EventHandler(this.cbFood_SelectedIndexChanged);
             // 
             // cbCategory
             // 
@@ -281,6 +285,7 @@
             this.flpTable.Name = "flpTable";
             this.flpTable.Size = new System.Drawing.Size(321, 322);
             this.flpTable.TabIndex = 5;
+            this.flpTable.Paint += new System.Windows.Forms.PaintEventHandler(this.flpTable_Paint);
             // 
             // fTableManager
             // 
