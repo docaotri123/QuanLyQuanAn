@@ -64,5 +64,46 @@ namespace QuanLyQuanAn.DAL.Repository
             string x = result.statusTable;
             return x;
         }
+
+        public bool AddTable(string nameTable)
+        {
+            var result = db.TableFoods.SingleOrDefault(m => m.nameTable == nameTable);
+            if (result != null)
+            {
+                return false;
+            }
+            TableFood T = new TableFood();
+            T.nameTable = nameTable;
+            T.statusTable = "Trống";
+
+            db.TableFoods.Add(T);
+            db.SaveChanges();
+            return true;
+        }
+
+        public bool DeleteTable(int idTable)
+        {
+            var result = db.TableFoods.SingleOrDefault(m => m.idTable == idTable);
+            if (result == null)
+            {
+                return false;
+            }
+            db.TableFoods.Remove(result);
+            db.SaveChanges();
+            return true;
+        }
+
+        public bool EditNameTable(int idTable, string newNameTable)
+        {
+            var result = db.TableFoods.SingleOrDefault(m => m.idTable == idTable);//id read only nên không cần kiểm tra
+            var result2 = db.TableFoods.SingleOrDefault(m => m.nameTable == newNameTable);//kiểm tra xem có trùng tên hay không
+            if (result2 != null)
+            {
+                return false;
+            }
+            result.nameTable = newNameTable;
+            db.SaveChanges();
+            return true;
+        }
     }
 }

@@ -13,12 +13,15 @@ namespace QuanLyQuanAn
     {
         AccountService account = new AccountService();
         FoodService food = new FoodService();
+        TableFoodService tableFood = new TableFoodService();
+
         string userNameAdmin;
         public fAdmin(string s1)
         {
             userNameAdmin = s1;//lấy tên đăng nhập, kiểm tra lúc thêm xóa sửa tài khoản
             InitializeComponent();
             LoadAdmin();
+            LoadTable();
         }
 
         private void txbUserName_TextChanged(object sender, EventArgs e)
@@ -41,6 +44,16 @@ namespace QuanLyQuanAn
             ListAccount();
             AddAccountBinding();
         }
+        private void LoadTable()
+        {
+            ListTable();
+            AddTableBinding();
+            List<string> Status = new List<string>();
+            Status.Add("Trống");
+            Status.Add("Đã Đặt");
+            cbTable.Items.AddRange(Status.ToArray());
+
+        }
         private void ListAccount()
         {
             //var ds = from s in db.Accounts select s;
@@ -57,7 +70,134 @@ namespace QuanLyQuanAn
             numericUpDownType.DataBindings.Add(new Binding("Value", dtgvAccount.DataSource, "style",true,DataSourceUpdateMode.Never));
 
         }
-        
+        //Mục bàn ăn
+        private void ListTable()
+        {
+            var ds = tableFood.GetTableFoods();
+            dataGridView1.DataSource = ds;
+        }
+        private void AddTableBinding()
+        {
+            txbIdTable.DataBindings.Add(new Binding("Text", dataGridView1.DataSource, "idTable", true, DataSourceUpdateMode.Never));
+            txbTableName.DataBindings.Add(new Binding("Text", dataGridView1.DataSource, "nameTable", true, DataSourceUpdateMode.Never));
+            cbTable.DataBindings.Add(new Binding("Text", dataGridView1.DataSource, "statusTable", true, DataSourceUpdateMode.Never));
+        }
+        private void ClearTableBinding()
+        {
+            txbIdTable.DataBindings.Clear();
+            txbTableName.DataBindings.Clear();
+            cbTable.DataBindings.Clear();
+        }
+
+        //thêm bàn ăn
+        private void btnAddTable_Click(object sender, EventArgs e)
+        {
+            string nameTable = txbTableName.Text.ToString();
+            bool test = tableFood.AddTable(nameTable);
+            if (test == true)
+            {
+                MessageBox.Show("Thêm bàn thành công");
+            }
+            else
+            {
+                MessageBox.Show("Bàn đã tồn tại không thể thêm");
+            }
+            ClearTableBinding();
+            ListTable();
+            AddTableBinding();
+
+        }
+        //xóa bàn ăn
+        private void btnDeleteTable_Click(object sender, EventArgs e)
+        {
+            int IdTable = int.Parse(txbIdTable.Text);
+            //MessageBox.Show(IdTable.ToString());
+            bool test = tableFood.DeleteTable(IdTable);
+            if (test == true)
+            {
+                MessageBox.Show("Xóa bàn thành công");
+            }
+            else
+            {
+                MessageBox.Show("Xóa bàn không thành công");
+            }
+            ClearTableBinding();
+            ListTable();
+            AddTableBinding();
+        }
+        //sửa bàn ăn, sửa tên
+        private void btnEditTable_Click(object sender, EventArgs e)
+        {
+            int IdTable = int.Parse(txbIdTable.Text);
+            string newNameTable = txbTableName.Text.ToString();
+            bool test = tableFood.EditNameTable(IdTable, newNameTable);
+            if (test == true)
+            {
+                MessageBox.Show("Sửa tên bàn thành công");
+            }
+            else
+            {
+                MessageBox.Show("Tên bàn đã tồn tại");
+            }
+            ClearTableBinding();
+            ListTable();
+            AddTableBinding();
+        }
+
+        //them bàn ăn
+        private void btnAddTable_Click_1(object sender, EventArgs e)
+        {
+            string nameTable = txbTableName.Text.ToString();
+            bool test = tableFood.AddTable(nameTable);
+            if (test == true)
+            {
+                MessageBox.Show("Thêm bàn thành công");
+            }
+            else
+            {
+                MessageBox.Show("Bàn đã tồn tại không thể thêm");
+            }
+            ClearTableBinding();
+            ListTable();
+            AddTableBinding();
+        }
+
+        //xóa bàn ăn
+        private void btnDeleteTable_Click_1(object sender, EventArgs e)
+        {
+            int IdTable = int.Parse(txbIdTable.Text);
+            //MessageBox.Show(IdTable.ToString());
+            bool test = tableFood.DeleteTable(IdTable);
+            if (test == true)
+            {
+                MessageBox.Show("Xóa bàn thành công");
+            }
+            else
+            {
+                MessageBox.Show("Xóa bàn không thành công");
+            }
+            ClearTableBinding();
+            ListTable();
+            AddTableBinding();
+        }
+        //sửa bàn ăn, sửa tên
+        private void btnEditTable_Click_1(object sender, EventArgs e)
+        {
+            int IdTable = int.Parse(txbIdTable.Text);
+            string newNameTable = txbTableName.Text.ToString();
+            bool test = tableFood.EditNameTable(IdTable, newNameTable);
+            if (test == true)
+            {
+                MessageBox.Show("Sửa tên bàn thành công");
+            }
+            else
+            {
+                MessageBox.Show("Tên bàn đã tồn tại");
+            }
+            ClearTableBinding();
+            ListTable();
+            AddTableBinding();
+        }
         //trien
 
         private void ListFood()
@@ -224,5 +364,7 @@ namespace QuanLyQuanAn
         {
 
         }
+
+        
     }
 }

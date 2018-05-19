@@ -14,6 +14,21 @@ namespace QuanLyQuanAn.BLL.Services
             this.tableRepository = new TableFoodRepository(new QuanLyQuanAnEntities());
         }
 
+        public bool AddTable(string nameTable)
+        {
+            return tableRepository.AddTable(nameTable);
+        }
+
+        public bool DeleteTable(int idTable)
+        {
+            return tableRepository.DeleteTable(idTable);
+        }
+
+        public bool EditNameTable(int idTable, string newNameTable)
+        {
+            return tableRepository.EditNameTable(idTable, newNameTable);
+        }
+
         public string GetStatusTable(int? idTable)
         {
             return tableRepository.GetStatusTable(idTable);
