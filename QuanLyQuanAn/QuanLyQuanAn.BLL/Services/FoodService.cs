@@ -15,6 +15,11 @@ namespace QuanLyQuanAn.BLL.Services
             this.foodRepository = new FoodRepository(new QuanLyQuanAnEntities());
         }
 
+        public void DeleteFood(int? idFood)
+        {
+            foodRepository.DeleteFood(idFood);
+        }
+
         public IEnumerable<Food> GetFoodByCategory(int? idCategory)
         {
             return foodRepository.GetFoodByCategory(idCategory);
@@ -28,6 +33,11 @@ namespace QuanLyQuanAn.BLL.Services
         public void InsertFood(string nameFood, decimal price, int idCategory)
         {
             foodRepository.InsertFood(nameFood, price, idCategory);
+        }
+
+        public void UpdateFood(int? idFood, string nameFood, decimal price, int idCategory)
+        {
+            foodRepository.UpdateFood(idFood, nameFood, price, idCategory);
         }
     }
 }

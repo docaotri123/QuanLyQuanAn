@@ -11,5 +11,6 @@ namespace QuanLyQuanAn.DAL.IRepository
     {
         IEnumerable<FoodCategory> GetFoodCategories();
         int GetIDCategoryByName(string name);
+        string GetNameCategoryById(int? id);
     }
 }

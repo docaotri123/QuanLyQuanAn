@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace QuanLyQuanAn.GUI.View
 {
-    public partial class fFood : Form
+    public partial class fAddFood : Form
     {
         FoodService food = new FoodService();
         FoodCategoryService category = new FoodCategoryService();
-        public fFood()
+        public fAddFood()
         {
             InitializeComponent();
             LoadCategory();

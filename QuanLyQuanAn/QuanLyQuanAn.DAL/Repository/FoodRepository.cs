@@ -54,5 +54,26 @@ namespace QuanLyQuanAn.DAL.Repository
             db.Foods.Add(f);
             db.SaveChanges();
         }
+
+        public void DeleteFood(int? idFood)
+        {
+            Food food = db.Foods.FirstOrDefault(m => m.idFood == idFood);
+            db.Foods.Remove(food);
+
+            db.SaveChanges();
+        }
+
+        public void UpdateFood(int? idFood, string nameFood, decimal price, int idCategory)
+        {
+            var result = db.Foods.FirstOrDefault(m => m.idFood == idFood);
+            if(result!=null)
+            {
+                result.nameFood = nameFood;
+                result.price = price;
+                result.idFoodCategory = idCategory;
+
+                db.SaveChanges();
+            }
+        }
     }
 }

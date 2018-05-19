@@ -62,17 +62,23 @@
     <Compile Include="View\fAccountProfile.designer.cs">
       <DependentUpon>fAccountProfile.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\fFood.cs">
+    <Compile Include="View\fAddFood.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\fFood.Designer.cs">
-      <DependentUpon>fFood.cs</DependentUpon>
+    <Compile Include="View\fAddFood.Designer.cs">
+      <DependentUpon>fAddFood.cs</DependentUpon>
     </Compile>
     <Compile Include="View\fAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\fAdmin.designer.cs">
       <DependentUpon>fAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\fEditFood.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\fEditFood.Designer.cs">
+      <DependentUpon>fEditFood.cs</DependentUpon>
     </Compile>
     <Compile Include="View\fLogin.cs">
       <SubType>Form</SubType>
@@ -98,11 +104,14 @@
     <EmbeddedResource Include="View\fAccountProfile.resx">
       <DependentUpon>fAccountProfile.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\fFood.resx">
-      <DependentUpon>fFood.cs</DependentUpon>
+    <EmbeddedResource Include="View\fAddFood.resx">
+      <DependentUpon>fAddFood.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\fAdmin.resx">
       <DependentUpon>fAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\fEditFood.resx">
+      <DependentUpon>fEditFood.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\fLogin.resx">
       <DependentUpon>fLogin.cs</DependentUpon>

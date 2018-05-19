@@ -58,10 +58,8 @@
             this.btnDeleteFood = new System.Windows.Forms.Button();
             this.btnAddFood = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dtgvFood = new System.Windows.Forms.DataGridView();
             this.tpFoodCategory = new System.Windows.Forms.TabPage();
             this.panel17 = new System.Windows.Forms.Panel();
-            this.dtgvCategory = new System.Windows.Forms.DataGridView();
             this.panel10 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -105,11 +103,17 @@
             this.panel24 = new System.Windows.Forms.Panel();
             this.btnResetPassword = new System.Windows.Forms.Button();
             this.panel26 = new System.Windows.Forms.Panel();
+            this.numericUpDownType = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
             this.panel28 = new System.Windows.Forms.Panel();
             this.txbUserName = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.numericUpDownType = new System.Windows.Forms.NumericUpDown();
+            this.lsvCategory = new System.Windows.Forms.ListView();
+            this.lsvFood = new System.Windows.Forms.ListView();
+            this.idFood = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.nameFood = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.price = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Category = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tcBill.SuspendLayout();
             this.tbBill.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvBill)).BeginInit();
@@ -124,10 +128,8 @@
             this.panel6.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvFood)).BeginInit();
             this.tpFoodCategory.SuspendLayout();
             this.panel17.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvCategory)).BeginInit();
             this.panel10.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel13.SuspendLayout();
@@ -147,8 +149,8 @@
             this.panel22.SuspendLayout();
             this.panel24.SuspendLayout();
             this.panel26.SuspendLayout();
-            this.panel28.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownType)).BeginInit();
+            this.panel28.SuspendLayout();
             this.SuspendLayout();
             // 
             // tcBill
@@ -428,19 +430,11 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.dtgvFood);
+            this.panel2.Controls.Add(this.lsvFood);
             this.panel2.Location = new System.Drawing.Point(1, 51);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(329, 275);
             this.panel2.TabIndex = 0;
-            // 
-            // dtgvFood
-            // 
-            this.dtgvFood.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvFood.Location = new System.Drawing.Point(0, 1);
-            this.dtgvFood.Name = "dtgvFood";
-            this.dtgvFood.Size = new System.Drawing.Size(326, 271);
-            this.dtgvFood.TabIndex = 0;
             // 
             // tpFoodCategory
             // 
@@ -458,19 +452,11 @@
             // 
             // panel17
             // 
-            this.panel17.Controls.Add(this.dtgvCategory);
+            this.panel17.Controls.Add(this.lsvCategory);
             this.panel17.Location = new System.Drawing.Point(2, 51);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(334, 275);
             this.panel17.TabIndex = 7;
-            // 
-            // dtgvCategory
-            // 
-            this.dtgvCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvCategory.Location = new System.Drawing.Point(2, 4);
-            this.dtgvCategory.Name = "dtgvCategory";
-            this.dtgvCategory.Size = new System.Drawing.Size(330, 268);
-            this.dtgvCategory.TabIndex = 0;
             // 
             // panel10
             // 
@@ -873,6 +859,18 @@
             this.panel26.Size = new System.Drawing.Size(255, 42);
             this.panel26.TabIndex = 4;
             // 
+            // numericUpDownType
+            // 
+            this.numericUpDownType.Location = new System.Drawing.Point(125, 11);
+            this.numericUpDownType.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownType.Name = "numericUpDownType";
+            this.numericUpDownType.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDownType.TabIndex = 1;
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -909,17 +907,49 @@
             this.label13.TabIndex = 0;
             this.label13.Text = "Tên Đăng nhập";
             // 
-            // numericUpDownType
+            // lsvCategory
             // 
-            this.numericUpDownType.Location = new System.Drawing.Point(125, 11);
-            this.numericUpDownType.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownType.Name = "numericUpDownType";
-            this.numericUpDownType.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDownType.TabIndex = 1;
+            this.lsvCategory.Location = new System.Drawing.Point(2, 4);
+            this.lsvCategory.Name = "lsvCategory";
+            this.lsvCategory.Size = new System.Drawing.Size(330, 268);
+            this.lsvCategory.TabIndex = 0;
+            this.lsvCategory.UseCompatibleStateImageBehavior = false;
+            // 
+            // lsvFood
+            // 
+            this.lsvFood.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.idFood,
+            this.nameFood,
+            this.price,
+            this.Category});
+            this.lsvFood.FullRowSelect = true;
+            this.lsvFood.Location = new System.Drawing.Point(0, 0);
+            this.lsvFood.MultiSelect = false;
+            this.lsvFood.Name = "lsvFood";
+            this.lsvFood.Size = new System.Drawing.Size(326, 272);
+            this.lsvFood.TabIndex = 0;
+            this.lsvFood.UseCompatibleStateImageBehavior = false;
+            this.lsvFood.View = System.Windows.Forms.View.Details;
+            // 
+            // idFood
+            // 
+            this.idFood.Text = "Id";
+            this.idFood.Width = 40;
+            // 
+            // nameFood
+            // 
+            this.nameFood.Text = "Name Food";
+            this.nameFood.Width = 120;
+            // 
+            // price
+            // 
+            this.price.Text = "Price";
+            this.price.Width = 120;
+            // 
+            // Category
+            // 
+            this.Category.Text = "Category";
+            this.Category.Width = 40;
             // 
             // fAdmin
             // 
@@ -950,10 +980,8 @@
             this.panel6.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvFood)).EndInit();
             this.tpFoodCategory.ResumeLayout(false);
             this.panel17.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvCategory)).EndInit();
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
             this.panel11.ResumeLayout(false);
@@ -980,9 +1008,9 @@
             this.panel24.ResumeLayout(false);
             this.panel26.ResumeLayout(false);
             this.panel26.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownType)).EndInit();
             this.panel28.ResumeLayout(false);
             this.panel28.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownType)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1007,7 +1035,6 @@
         private System.Windows.Forms.Button btnDeleteFood;
         private System.Windows.Forms.Button btnAddFood;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridView dtgvFood;
         private System.Windows.Forms.TabPage tpFoodCategory;
         private System.Windows.Forms.TabPage tpTable;
         private System.Windows.Forms.TabPage tpAccount;
@@ -1024,7 +1051,6 @@
         private System.Windows.Forms.TextBox txbNamFood;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel17;
-        private System.Windows.Forms.DataGridView dtgvCategory;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
@@ -1071,5 +1097,11 @@
         private System.Windows.Forms.TextBox txbUserName;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.NumericUpDown numericUpDownType;
+        private System.Windows.Forms.ListView lsvFood;
+        private System.Windows.Forms.ListView lsvCategory;
+        private System.Windows.Forms.ColumnHeader idFood;
+        private System.Windows.Forms.ColumnHeader nameFood;
+        private System.Windows.Forms.ColumnHeader price;
+        private System.Windows.Forms.ColumnHeader Category;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace QuanLyQuanAn.GUI.View
 {
-    partial class fFood
+    partial class fEditFood
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnAddFood = new System.Windows.Forms.Button();
+            this.btnEditFood = new System.Windows.Forms.Button();
             this.cbFoodCategory = new System.Windows.Forms.ComboBox();
             this.txbpriceFood = new System.Windows.Forms.TextBox();
             this.txbnameFood = new System.Windows.Forms.TextBox();
@@ -41,28 +41,28 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnAddFood);
+            this.panel1.Controls.Add(this.btnEditFood);
             this.panel1.Controls.Add(this.cbFoodCategory);
             this.panel1.Controls.Add(this.txbpriceFood);
             this.panel1.Controls.Add(this.txbnameFood);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(2, 2);
+            this.panel1.Location = new System.Drawing.Point(0, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(364, 165);
-            this.panel1.TabIndex = 0;
+            this.panel1.Size = new System.Drawing.Size(334, 179);
+            this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // btnAddFood
+            // btnEditFood
             // 
-            this.btnAddFood.Location = new System.Drawing.Point(27, 134);
-            this.btnAddFood.Name = "btnAddFood";
-            this.btnAddFood.Size = new System.Drawing.Size(75, 23);
-            this.btnAddFood.TabIndex = 6;
-            this.btnAddFood.Text = "Add Food";
-            this.btnAddFood.UseVisualStyleBackColor = true;
-            this.btnAddFood.Click += new System.EventHandler(this.btnAddFood_Click);
+            this.btnEditFood.Location = new System.Drawing.Point(27, 134);
+            this.btnEditFood.Name = "btnEditFood";
+            this.btnEditFood.Size = new System.Drawing.Size(75, 23);
+            this.btnEditFood.TabIndex = 6;
+            this.btnEditFood.Text = "Edit Food";
+            this.btnEditFood.UseVisualStyleBackColor = true;
+            this.btnEditFood.Click += new System.EventHandler(this.btnEditFood_Click);
             // 
             // cbFoodCategory
             // 
@@ -85,6 +85,7 @@
             this.txbnameFood.Name = "txbnameFood";
             this.txbnameFood.Size = new System.Drawing.Size(155, 20);
             this.txbnameFood.TabIndex = 3;
+            this.txbnameFood.TextChanged += new System.EventHandler(this.txbnameFood_TextChanged);
             // 
             // label3
             // 
@@ -113,15 +114,15 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Name Food";
             // 
-            // fFood
+            // fEditFood
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(366, 171);
+            this.ClientSize = new System.Drawing.Size(335, 186);
             this.Controls.Add(this.panel1);
-            this.Name = "fFood";
+            this.Name = "fEditFood";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Add Food";
+            this.Text = "Edit Food";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -131,12 +132,12 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnEditFood;
+        private System.Windows.Forms.ComboBox cbFoodCategory;
         private System.Windows.Forms.TextBox txbpriceFood;
         private System.Windows.Forms.TextBox txbnameFood;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cbFoodCategory;
-        private System.Windows.Forms.Button btnAddFood;
     }
 }

@@ -44,5 +44,10 @@ namespace QuanLyQuanAn.DAL.Repository
         {
             return db.FoodCategories.FirstOrDefault(m => m.nameFoodCategory.Equals(name)).idFoodCategory;
         }
+
+        public string GetNameCategoryById(int? id)
+        {
+            return db.FoodCategories.FirstOrDefault(m => m.idFoodCategory == id).nameFoodCategory;
+        }
     }
 }

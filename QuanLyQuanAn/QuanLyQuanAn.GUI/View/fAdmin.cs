@@ -64,40 +64,63 @@ namespace QuanLyQuanAn
         {
             var listFood = food.GetFoods();
             List<VFood> list = new List<VFood>();
-            VFood x;
             foreach(var item in listFood)
             {
-                x = new VFood();
-                x.idFood = item.idFood;
-                x.nameFood = item.nameFood;
-                x.price = item.price;
-                x.idFoodCategory = item.idFoodCategory;
-                list.Add(x);
+                ListViewItem x = new ListViewItem(item.idFood.ToString());
+                x.SubItems.Add(item.nameFood);
+                x.SubItems.Add(item.price.ToString());
+                x.SubItems.Add(item.idFoodCategory.ToString());
+
+                lsvFood.Items.Add(x);
             }
-            dtgvFood.DataSource = list;
+            
         }
 
         private void btnAddFood_Click(object sender, EventArgs e)
         {
-            fFood food = new fFood();
+            fAddFood food = new fAddFood();
             food.Show();
         }
 
         private void btnXem_Click(object sender, EventArgs e)
         {
+            lsvFood.Items.Clear();
             ListFood();
         }
 
         private void btnEditFood_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Sửa");
+            if (lsvFood.SelectedItems.Count > 0)
+            {
+                ListViewItem item = lsvFood.SelectedItems[0];
+                string id= item.SubItems[0].Text;
+                string name= item.SubItems[1].Text;
+                string price= item.SubItems[2].Text;
+                string idCategory = item.SubItems[3].Text;
+
+                fEditFood f = new fEditFood(id,name,price, idCategory);
+                f.Show();
+            }
+            else
+            {
+                MessageBox.Show("Chưa chọn dòng để sửa");
+            }
         }
 
   
 
         private void btnDeleteFood_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Xóa");
+            if(lsvFood.SelectedItems.Count>0)
+            {
+                string x = lsvFood.SelectedItems[0].Text;
+                food.DeleteFood(int.Parse(x));
+                MessageBox.Show("Xóa thành công");
+            }
+            else
+            {
+                MessageBox.Show("Chưa chọn dòng để xóa");
+            }
         }
 
         private void btnAddAccount_Click(object sender, EventArgs e)

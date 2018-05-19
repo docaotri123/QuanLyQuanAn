@@ -11,5 +11,6 @@ namespace QuanLyQuanAn.BLL.IService
     {
         IEnumerable<FoodCategory> GetFoodCategories();
         int GetIDCategoryByName(string name);
+        string GetNameCategoryById(int? id);
     }
 }
