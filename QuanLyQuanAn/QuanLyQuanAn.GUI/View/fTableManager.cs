@@ -18,13 +18,14 @@ namespace QuanLyQuanAn
         BillService bill = new BillService();
         BillInfoService billInfo = new BillInfoService();
 
-        string userName;
-        string passWord;
+        string s1;
+        string s2;
         public fTableManager(string userName,string password, bool style)
         {
             InitializeComponent();
             LoadTable();
-           
+            s1 = userName;
+            s2 = password;
             
             if(style==false)
             {
@@ -103,14 +104,14 @@ namespace QuanLyQuanAn
 
         private void thôngTinCáNhânToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            fAccountProfile profile = new fAccountProfile(userName,passWord);
+            fAccountProfile profile = new fAccountProfile(s1,s2);
 
             profile.ShowDialog();
         }
 
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            fAdmin admin = new fAdmin();
+            fAdmin admin = new fAdmin(s1);
             //admin.Enabled = true;
             admin.ShowDialog();
         }

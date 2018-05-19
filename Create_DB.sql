@@ -47,8 +47,9 @@ CREATE TABLE BillInfo
 	FOREIGN KEY(idBill) REFERENCES dbo.Bill(idBill),
 	FOREIGN KEY(idFood) REFERENCES dbo.Food(idFood)
 )
---May Bàn
-QUOC-PC\QUOCDO
-DESKTOP-4THQP67\SQLEXPRESS
---LAP TOP
+
+go	
+alter table Account add constraint Account_PassWord  default 0 for passWordUser
+go
+
 

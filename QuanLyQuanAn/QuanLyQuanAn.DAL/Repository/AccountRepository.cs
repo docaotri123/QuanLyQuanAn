@@ -66,5 +66,53 @@ namespace QuanLyQuanAn.DAL.Repository
             }
             return true;
         }
+
+        public bool UpdateAccountFormAdmin(string userName, bool type)
+        {
+            var result = db.Accounts.SingleOrDefault(m => m.userName == userName);
+            if (result != null)
+            {
+                result.style = type;
+                db.SaveChanges();
+            }
+            else
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool AddAccount(string userName, bool type)
+        {
+            //kiểm tra có trùng tên đăng nhập hay không
+            var result = db.Accounts.SingleOrDefault(m => m.userName == userName);
+            if (result != null)
+            {
+                return false;
+            }
+            //kêt thúc kiêm tra
+            Account X = new Account();
+            X.userName = userName;
+            X.style = type;
+            X.passWordUser = "0";
+            db.Accounts.Add(X);
+            db.SaveChanges();
+            return true;
+
+        }
+
+        public bool DeleteAccount(string userName)
+        {
+            //xóa tài khoản
+            var result = db.Accounts.SingleOrDefault(m => m.userName == userName);
+            if (result == null)//không tồn tại
+            {
+                return false;
+            }
+
+            db.Accounts.Remove(result);
+            db.SaveChanges();
+            return true;
+        }
     }
 }

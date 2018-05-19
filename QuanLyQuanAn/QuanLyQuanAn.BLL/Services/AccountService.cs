@@ -15,6 +15,16 @@ namespace QuanLyQuanAn.BLL
             this.accountRepository = new AccountRepository(new QuanLyQuanAnEntities());
         }
 
+        public bool AddAccount(string userName, bool type)
+        {
+            return accountRepository.AddAccount(userName, type);
+        }
+
+        public bool DeleteAccount(string userName)
+        {
+            return accountRepository.DeleteAccount(userName);
+        }
+
         public Account GetAccountByUserName(string userName)
         {
             return accountRepository.GetAccountByUserName(userName);
@@ -35,6 +45,11 @@ namespace QuanLyQuanAn.BLL
         public bool UpdateAccount(string userName, string newPassword)
         {
             return accountRepository.UpdateAccount(userName, newPassword);
+        }
+
+        public bool UpdateAccountFormAdmin(string userName, bool type)
+        {
+            return accountRepository.UpdateAccountFormAdmin(userName, type);
         }
     }
 
