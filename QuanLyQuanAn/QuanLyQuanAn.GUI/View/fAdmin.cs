@@ -16,8 +16,9 @@ namespace QuanLyQuanAn
         private readonly AccountService account = new AccountService();
         private readonly FoodService food = new FoodService();
         private readonly FoodCategoryService category = new FoodCategoryService();
-    
-   
+        BillService bill = new BillService();
+
+
         TableFoodService tableFood = new TableFoodService();
 
 
@@ -78,7 +79,19 @@ namespace QuanLyQuanAn
             numericUpDownType.DataBindings.Add(new Binding("Value", dtgvAccount.DataSource, "style", true, DataSourceUpdateMode.Never));
 
         }
-
+        //Mục doanh thu
+        private void ListBill()
+        {
+            DateTime date1 = dtpkFromDate.Value.Date;
+            DateTime date2 = dtkpToDate.Value.Date;
+            var ds = bill.GetBillsByDate(date1, date2);
+            dtgvBill.DataSource = ds;
+        }
+        //click Thống kê
+        private void btnBill_Click_1(object sender, EventArgs e)
+        {
+            ListBill();
+        }
         //Mục bàn ăn
         private void ListTable()
         {
@@ -464,5 +477,6 @@ namespace QuanLyQuanAn
             }
         }
 
+        
     }
 }

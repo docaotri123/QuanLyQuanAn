@@ -3,6 +3,7 @@ using QuanLyQuanAn.DAL.IRepository;
 using QuanLyQuanAn.DAL.Model;
 using QuanLyQuanAn.DAL.Repository;
 using System;
+using System.Collections.Generic;
 
 namespace QuanLyQuanAn.BLL.Services
 {
@@ -13,6 +14,12 @@ namespace QuanLyQuanAn.BLL.Services
         {
             this.billRepository = new BillRepository(new QuanLyQuanAnEntities());
         }
+
+        public IEnumerable<Bill> GetBillsByDate(DateTime? dateCheckIn, DateTime? dateCheckOut)
+        {
+            return billRepository.GetBillsByDate(dateCheckIn, dateCheckOut);
+        }
+
         public Bill GetIdBillByTable(int? idTable)
         {
             return billRepository.GetIdBillByTable(idTable);

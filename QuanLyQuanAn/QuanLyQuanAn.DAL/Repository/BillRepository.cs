@@ -88,5 +88,10 @@ namespace QuanLyQuanAn.DAL.Repository
                 db.SaveChanges();
             }
         }
+
+        public IEnumerable<Bill> GetBillsByDate(DateTime? dateCheckIn, DateTime? dateCheckOut)
+        {
+            return db.Bills.Where(m => m.dateCheckOUt >= dateCheckIn && m.dateCheckOUt <= dateCheckOut).ToList();
+        }
     }
 }

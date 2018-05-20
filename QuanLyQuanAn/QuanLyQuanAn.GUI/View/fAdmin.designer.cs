@@ -65,10 +65,8 @@
             this.tpFoodCategory = new System.Windows.Forms.TabPage();
             this.panel17 = new System.Windows.Forms.Panel();
             this.lsvCategory = new System.Windows.Forms.ListView();
-
             this.IdCategory = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.nameCategory = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-
             this.panel10 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -205,6 +203,7 @@
             this.btnBill.TabIndex = 3;
             this.btnBill.Text = "Thống kê";
             this.btnBill.UseVisualStyleBackColor = true;
+            this.btnBill.Click += new System.EventHandler(this.btnBill_Click_1);
             // 
             // dtkpToDate
             // 
@@ -436,9 +435,7 @@
             this.Category});
             this.lsvFood.FullRowSelect = true;
             this.lsvFood.Location = new System.Drawing.Point(0, 0);
-
             this.lsvFood.MultiSelect = false;
-
             this.lsvFood.Name = "lsvFood";
             this.lsvFood.Size = new System.Drawing.Size(326, 272);
             this.lsvFood.TabIndex = 0;
@@ -489,18 +486,15 @@
             // 
             // lsvCategory
             // 
-
             this.lsvCategory.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.IdCategory,
             this.nameCategory});
             this.lsvCategory.FullRowSelect = true;
-
             this.lsvCategory.Location = new System.Drawing.Point(2, 4);
             this.lsvCategory.Name = "lsvCategory";
             this.lsvCategory.Size = new System.Drawing.Size(330, 268);
             this.lsvCategory.TabIndex = 0;
             this.lsvCategory.UseCompatibleStateImageBehavior = false;
-
             this.lsvCategory.View = System.Windows.Forms.View.Details;
             // 
             // IdCategory
@@ -511,7 +505,6 @@
             // 
             this.nameCategory.Text = "Name Category";
             this.nameCategory.Width = 120;
-
             // 
             // panel10
             // 
