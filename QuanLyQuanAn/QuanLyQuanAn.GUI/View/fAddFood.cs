@@ -15,9 +15,11 @@ namespace QuanLyQuanAn.GUI.View
     {
         FoodService food = new FoodService();
         FoodCategoryService category = new FoodCategoryService();
-        public fAddFood()
+        fAdmin fadmin;
+        public fAddFood(fAdmin fAdmin)
         {
             InitializeComponent();
+            fadmin = fAdmin;
             LoadCategory();
         }
 
@@ -39,6 +41,7 @@ namespace QuanLyQuanAn.GUI.View
             food.InsertFood(txbnameFood.Text, int.Parse(txbpriceFood.Text), idCategory);
             if (MessageBox.Show("Bạn Thêm Thành Công.", "Thông báo", MessageBoxButtons.OK) == System.Windows.Forms.DialogResult.OK)
             {
+                fadmin.LoadFoodGrid();
                 this.Close();
             }
             

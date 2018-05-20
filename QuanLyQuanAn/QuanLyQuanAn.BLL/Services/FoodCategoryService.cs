@@ -17,7 +17,13 @@ namespace QuanLyQuanAn.BLL.Services
         {
             this.foodCategory = new FoodCategoryRepository(new QuanLyQuanAnEntities());
         }
-        public IEnumerable<FoodCategory> GetFoodCategories()
+
+        public void DeleteCategory(int? id)
+        {
+            foodCategory.DeleteCategory(id);
+        }
+
+        public IEnumerable<FoodCategory> GetFoodCategories(bool noTracking = false)
         {
             return foodCategory.GetFoodCategories();
         }
@@ -30,6 +36,16 @@ namespace QuanLyQuanAn.BLL.Services
         public string GetNameCategoryById(int? id)
         {
             return foodCategory.GetNameCategoryById(id);
+        }
+
+        public void InsertCategory(string name)
+        {
+            foodCategory.InsertCategory(name);
+        }
+
+        public void UpdateCategory(int? id, string name)
+        {
+            foodCategory.UpdateCategory(id, name);
         }
     }
 }

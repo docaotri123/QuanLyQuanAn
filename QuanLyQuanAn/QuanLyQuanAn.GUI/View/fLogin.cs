@@ -17,6 +17,8 @@ namespace QuanLyQuanAn
         public fLogin()
         {
             InitializeComponent();
+            txbUserName.Text = "TriDo113";
+            txbPassword.Text = "123456";
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -39,6 +41,7 @@ namespace QuanLyQuanAn
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            
             if(Login(txbUserName.Text,txbPassword.Text))
             {
                 //AccountService account = new AccountService();

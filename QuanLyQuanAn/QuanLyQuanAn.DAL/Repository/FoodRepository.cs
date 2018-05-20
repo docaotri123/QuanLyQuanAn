@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using QuanLyQuanAn.DAL.Model;
+using System.Data.Entity;
 
 namespace QuanLyQuanAn.DAL.Repository
 {
@@ -19,7 +20,7 @@ namespace QuanLyQuanAn.DAL.Repository
 
         public IEnumerable<Food> GetFoodByCategory(int? idCategory)
         {
-            return db.Foods.Where(m=>m.idFoodCategory==idCategory).ToList();
+            return db.Foods.Where(m => m.idFoodCategory == idCategory).ToList();
         }
         protected virtual void Dispose(bool disposing)
         {
@@ -39,9 +40,19 @@ namespace QuanLyQuanAn.DAL.Repository
             GC.SuppressFinalize(this);
         }
 
-        public IEnumerable<Food> GetFoods()
+        public IEnumerable<Food> GetFoods(bool noTracking = false)
         {
-            return db.Foods.ToList();
+            var list = new List<Food>();
+            if (noTracking)
+            {
+                list = db.Foods.AsNoTracking().ToList();
+            }
+            else
+            {
+                list = db.Foods.ToList();
+            }
+
+            return list;
         }
 
         public void InsertFood(string nameFood, decimal price, int idCategory)
@@ -66,7 +77,7 @@ namespace QuanLyQuanAn.DAL.Repository
         public void UpdateFood(int? idFood, string nameFood, decimal price, int idCategory)
         {
             var result = db.Foods.FirstOrDefault(m => m.idFood == idFood);
-            if(result!=null)
+            if (result != null)
             {
                 result.nameFood = nameFood;
                 result.price = price;
@@ -74,6 +85,16 @@ namespace QuanLyQuanAn.DAL.Repository
 
                 db.SaveChanges();
             }
+        }
+
+        public IEnumerable<Food> SearchNameFood(string name)
+        {
+            return db.Foods.Where(m => m.nameFood.Contains(name));
+        }
+
+        public int CountFoodByCategory(int? idCate)
+        {
+            return db.Foods.Count(m => m.idFoodCategory == idCate);
         }
     }
 }

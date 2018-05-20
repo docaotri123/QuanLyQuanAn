@@ -29,96 +29,94 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnEditFood = new System.Windows.Forms.Button();
-            this.cbFoodCategory = new System.Windows.Forms.ComboBox();
-            this.txbpriceFood = new System.Windows.Forms.TextBox();
-            this.txbnameFood = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.Price = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnEditFood = new System.Windows.Forms.Button();
+            this.txbnameFood = new System.Windows.Forms.TextBox();
+            this.txbprice = new System.Windows.Forms.TextBox();
+            this.cbCategory = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnEditFood);
-            this.panel1.Controls.Add(this.cbFoodCategory);
-            this.panel1.Controls.Add(this.txbpriceFood);
+            this.panel1.Controls.Add(this.cbCategory);
+            this.panel1.Controls.Add(this.txbprice);
             this.panel1.Controls.Add(this.txbnameFood);
+            this.panel1.Controls.Add(this.btnEditFood);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.Price);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(0, 2);
+            this.panel1.Location = new System.Drawing.Point(1, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(334, 179);
-            this.panel1.TabIndex = 1;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
-            // btnEditFood
-            // 
-            this.btnEditFood.Location = new System.Drawing.Point(27, 134);
-            this.btnEditFood.Name = "btnEditFood";
-            this.btnEditFood.Size = new System.Drawing.Size(75, 23);
-            this.btnEditFood.TabIndex = 6;
-            this.btnEditFood.Text = "Edit Food";
-            this.btnEditFood.UseVisualStyleBackColor = true;
-            this.btnEditFood.Click += new System.EventHandler(this.btnEditFood_Click);
-            // 
-            // cbFoodCategory
-            // 
-            this.cbFoodCategory.FormattingEnabled = true;
-            this.cbFoodCategory.Location = new System.Drawing.Point(102, 93);
-            this.cbFoodCategory.Name = "cbFoodCategory";
-            this.cbFoodCategory.Size = new System.Drawing.Size(155, 21);
-            this.cbFoodCategory.TabIndex = 5;
-            // 
-            // txbpriceFood
-            // 
-            this.txbpriceFood.Location = new System.Drawing.Point(102, 59);
-            this.txbpriceFood.Name = "txbpriceFood";
-            this.txbpriceFood.Size = new System.Drawing.Size(155, 20);
-            this.txbpriceFood.TabIndex = 4;
-            // 
-            // txbnameFood
-            // 
-            this.txbnameFood.Location = new System.Drawing.Point(102, 20);
-            this.txbnameFood.Name = "txbnameFood";
-            this.txbnameFood.Size = new System.Drawing.Size(155, 20);
-            this.txbnameFood.TabIndex = 3;
-            this.txbnameFood.TextChanged += new System.EventHandler(this.txbnameFood_TextChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(24, 101);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Category";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 59);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(31, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Price";
+            this.panel1.Size = new System.Drawing.Size(347, 198);
+            this.panel1.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 20);
+            this.label1.Location = new System.Drawing.Point(25, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Name Food";
             // 
+            // Price
+            // 
+            this.Price.AutoSize = true;
+            this.Price.Location = new System.Drawing.Point(25, 56);
+            this.Price.Name = "Price";
+            this.Price.Size = new System.Drawing.Size(31, 13);
+            this.Price.TabIndex = 1;
+            this.Price.Text = "Price";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(25, 91);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(49, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Category";
+            // 
+            // btnEditFood
+            // 
+            this.btnEditFood.Location = new System.Drawing.Point(28, 128);
+            this.btnEditFood.Name = "btnEditFood";
+            this.btnEditFood.Size = new System.Drawing.Size(75, 23);
+            this.btnEditFood.TabIndex = 3;
+            this.btnEditFood.Text = "Edit";
+            this.btnEditFood.UseVisualStyleBackColor = true;
+            this.btnEditFood.Click += new System.EventHandler(this.btnEditFood_Click);
+            // 
+            // txbnameFood
+            // 
+            this.txbnameFood.Location = new System.Drawing.Point(130, 25);
+            this.txbnameFood.Name = "txbnameFood";
+            this.txbnameFood.Size = new System.Drawing.Size(155, 20);
+            this.txbnameFood.TabIndex = 4;
+            // 
+            // txbprice
+            // 
+            this.txbprice.Location = new System.Drawing.Point(130, 56);
+            this.txbprice.Name = "txbprice";
+            this.txbprice.Size = new System.Drawing.Size(155, 20);
+            this.txbprice.TabIndex = 5;
+            // 
+            // cbCategory
+            // 
+            this.cbCategory.FormattingEnabled = true;
+            this.cbCategory.Location = new System.Drawing.Point(130, 91);
+            this.cbCategory.Name = "cbCategory";
+            this.cbCategory.Size = new System.Drawing.Size(155, 21);
+            this.cbCategory.TabIndex = 6;
+            // 
             // fEditFood
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(335, 186);
+            this.ClientSize = new System.Drawing.Size(348, 202);
             this.Controls.Add(this.panel1);
             this.Name = "fEditFood";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -132,12 +130,12 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnEditFood;
-        private System.Windows.Forms.ComboBox cbFoodCategory;
-        private System.Windows.Forms.TextBox txbpriceFood;
+        private System.Windows.Forms.ComboBox cbCategory;
+        private System.Windows.Forms.TextBox txbprice;
         private System.Windows.Forms.TextBox txbnameFood;
+        private System.Windows.Forms.Button btnEditFood;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label Price;
         private System.Windows.Forms.Label label1;
     }
 }

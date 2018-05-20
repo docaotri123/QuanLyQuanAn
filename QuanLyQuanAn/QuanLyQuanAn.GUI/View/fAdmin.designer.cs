@@ -37,7 +37,7 @@
             this.dtpkFromDate = new System.Windows.Forms.DateTimePicker();
             this.tpFood = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.txbNameFood = new System.Windows.Forms.TextBox();
+            this.txbNameSearch = new System.Windows.Forms.TextBox();
             this.btnSearchFood = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
@@ -53,13 +53,20 @@
             this.txbIdFood = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btnXem = new System.Windows.Forms.Button();
             this.btnEditFood = new System.Windows.Forms.Button();
             this.btnDeleteFood = new System.Windows.Forms.Button();
             this.btnAddFood = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lsvFood = new System.Windows.Forms.ListView();
+            this.idFood = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.nameFood = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.price = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Category = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tpFoodCategory = new System.Windows.Forms.TabPage();
             this.panel17 = new System.Windows.Forms.Panel();
+            this.lsvCategory = new System.Windows.Forms.ListView();
+            this.IdCategory = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.nameCategory = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel10 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -71,7 +78,6 @@
             this.txbCategory = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.panel16 = new System.Windows.Forms.Panel();
-            this.btnSearchCategory = new System.Windows.Forms.Button();
             this.btnEditCategory = new System.Windows.Forms.Button();
             this.btnDeleteCategory = new System.Windows.Forms.Button();
             this.btnAddCategory = new System.Windows.Forms.Button();
@@ -108,12 +114,6 @@
             this.panel28 = new System.Windows.Forms.Panel();
             this.txbUserName = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.lsvCategory = new System.Windows.Forms.ListView();
-            this.lsvFood = new System.Windows.Forms.ListView();
-            this.idFood = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.nameFood = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.price = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Category = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tcBill.SuspendLayout();
             this.tbBill.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvBill)).BeginInit();
@@ -235,19 +235,19 @@
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.txbNameFood);
+            this.panel5.Controls.Add(this.txbNameSearch);
             this.panel5.Controls.Add(this.btnSearchFood);
             this.panel5.Location = new System.Drawing.Point(336, 3);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(264, 42);
             this.panel5.TabIndex = 3;
             // 
-            // txbNameFood
+            // txbNameSearch
             // 
-            this.txbNameFood.Location = new System.Drawing.Point(0, 4);
-            this.txbNameFood.Name = "txbNameFood";
-            this.txbNameFood.Size = new System.Drawing.Size(170, 20);
-            this.txbNameFood.TabIndex = 4;
+            this.txbNameSearch.Location = new System.Drawing.Point(6, 5);
+            this.txbNameSearch.Name = "txbNameSearch";
+            this.txbNameSearch.Size = new System.Drawing.Size(170, 20);
+            this.txbNameSearch.TabIndex = 4;
             // 
             // btnSearchFood
             // 
@@ -257,6 +257,7 @@
             this.btnSearchFood.TabIndex = 3;
             this.btnSearchFood.Text = "Tìm";
             this.btnSearchFood.UseVisualStyleBackColor = true;
+            this.btnSearchFood.Click += new System.EventHandler(this.btnSearchFood_Click);
             // 
             // panel4
             // 
@@ -379,7 +380,6 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.btnXem);
             this.panel3.Controls.Add(this.btnEditFood);
             this.panel3.Controls.Add(this.btnDeleteFood);
             this.panel3.Controls.Add(this.btnAddFood);
@@ -387,16 +387,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(329, 42);
             this.panel3.TabIndex = 1;
-            // 
-            // btnXem
-            // 
-            this.btnXem.Location = new System.Drawing.Point(260, 4);
-            this.btnXem.Name = "btnXem";
-            this.btnXem.Size = new System.Drawing.Size(66, 35);
-            this.btnXem.TabIndex = 2;
-            this.btnXem.Text = "Xem";
-            this.btnXem.UseVisualStyleBackColor = true;
-            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
             // 
             // btnEditFood
             // 
@@ -436,6 +426,41 @@
             this.panel2.Size = new System.Drawing.Size(329, 275);
             this.panel2.TabIndex = 0;
             // 
+            // lsvFood
+            // 
+            this.lsvFood.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.idFood,
+            this.nameFood,
+            this.price,
+            this.Category});
+            this.lsvFood.FullRowSelect = true;
+            this.lsvFood.Location = new System.Drawing.Point(0, 0);
+            this.lsvFood.Name = "lsvFood";
+            this.lsvFood.Size = new System.Drawing.Size(326, 272);
+            this.lsvFood.TabIndex = 0;
+            this.lsvFood.UseCompatibleStateImageBehavior = false;
+            this.lsvFood.View = System.Windows.Forms.View.Details;
+            // 
+            // idFood
+            // 
+            this.idFood.Text = "Id";
+            this.idFood.Width = 40;
+            // 
+            // nameFood
+            // 
+            this.nameFood.Text = "Name Food";
+            this.nameFood.Width = 120;
+            // 
+            // price
+            // 
+            this.price.Text = "Price";
+            this.price.Width = 120;
+            // 
+            // Category
+            // 
+            this.Category.Text = "Category";
+            this.Category.Width = 40;
+            // 
             // tpFoodCategory
             // 
             this.tpFoodCategory.Controls.Add(this.panel17);
@@ -457,6 +482,28 @@
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(334, 275);
             this.panel17.TabIndex = 7;
+            // 
+            // lsvCategory
+            // 
+            this.lsvCategory.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.IdCategory,
+            this.nameCategory});
+            this.lsvCategory.FullRowSelect = true;
+            this.lsvCategory.Location = new System.Drawing.Point(2, 4);
+            this.lsvCategory.Name = "lsvCategory";
+            this.lsvCategory.Size = new System.Drawing.Size(330, 268);
+            this.lsvCategory.TabIndex = 0;
+            this.lsvCategory.UseCompatibleStateImageBehavior = false;
+            this.lsvCategory.View = System.Windows.Forms.View.Details;
+            // 
+            // IdCategory
+            // 
+            this.IdCategory.Text = "Id";
+            // 
+            // nameCategory
+            // 
+            this.nameCategory.Text = "Name Category";
+            this.nameCategory.Width = 120;
             // 
             // panel10
             // 
@@ -548,7 +595,6 @@
             // 
             // panel16
             // 
-            this.panel16.Controls.Add(this.btnSearchCategory);
             this.panel16.Controls.Add(this.btnEditCategory);
             this.panel16.Controls.Add(this.btnDeleteCategory);
             this.panel16.Controls.Add(this.btnAddCategory);
@@ -556,15 +602,6 @@
             this.panel16.Name = "panel16";
             this.panel16.Size = new System.Drawing.Size(329, 42);
             this.panel16.TabIndex = 4;
-            // 
-            // btnSearchCategory
-            // 
-            this.btnSearchCategory.Location = new System.Drawing.Point(260, 4);
-            this.btnSearchCategory.Name = "btnSearchCategory";
-            this.btnSearchCategory.Size = new System.Drawing.Size(66, 35);
-            this.btnSearchCategory.TabIndex = 2;
-            this.btnSearchCategory.Text = "Xem";
-            this.btnSearchCategory.UseVisualStyleBackColor = true;
             // 
             // btnEditCategory
             // 
@@ -574,6 +611,7 @@
             this.btnEditCategory.TabIndex = 2;
             this.btnEditCategory.Text = "Sửa";
             this.btnEditCategory.UseVisualStyleBackColor = true;
+            this.btnEditCategory.Click += new System.EventHandler(this.btnEditCategory_Click);
             // 
             // btnDeleteCategory
             // 
@@ -583,6 +621,7 @@
             this.btnDeleteCategory.TabIndex = 1;
             this.btnDeleteCategory.Text = "Xóa";
             this.btnDeleteCategory.UseVisualStyleBackColor = true;
+            this.btnDeleteCategory.Click += new System.EventHandler(this.btnDeleteCategory_Click);
             // 
             // btnAddCategory
             // 
@@ -592,6 +631,7 @@
             this.btnAddCategory.TabIndex = 0;
             this.btnAddCategory.Text = "Thêm";
             this.btnAddCategory.UseVisualStyleBackColor = true;
+            this.btnAddCategory.Click += new System.EventHandler(this.btnAddCategory_Click);
             // 
             // tpTable
             // 
@@ -907,50 +947,6 @@
             this.label13.TabIndex = 0;
             this.label13.Text = "Tên Đăng nhập";
             // 
-            // lsvCategory
-            // 
-            this.lsvCategory.Location = new System.Drawing.Point(2, 4);
-            this.lsvCategory.Name = "lsvCategory";
-            this.lsvCategory.Size = new System.Drawing.Size(330, 268);
-            this.lsvCategory.TabIndex = 0;
-            this.lsvCategory.UseCompatibleStateImageBehavior = false;
-            // 
-            // lsvFood
-            // 
-            this.lsvFood.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.idFood,
-            this.nameFood,
-            this.price,
-            this.Category});
-            this.lsvFood.FullRowSelect = true;
-            this.lsvFood.Location = new System.Drawing.Point(0, 0);
-            this.lsvFood.MultiSelect = false;
-            this.lsvFood.Name = "lsvFood";
-            this.lsvFood.Size = new System.Drawing.Size(326, 272);
-            this.lsvFood.TabIndex = 0;
-            this.lsvFood.UseCompatibleStateImageBehavior = false;
-            this.lsvFood.View = System.Windows.Forms.View.Details;
-            // 
-            // idFood
-            // 
-            this.idFood.Text = "Id";
-            this.idFood.Width = 40;
-            // 
-            // nameFood
-            // 
-            this.nameFood.Text = "Name Food";
-            this.nameFood.Width = 120;
-            // 
-            // price
-            // 
-            this.price.Text = "Price";
-            this.price.Width = 120;
-            // 
-            // Category
-            // 
-            this.Category.Text = "Category";
-            this.Category.Width = 40;
-            // 
             // fAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1026,11 +1022,10 @@
         private System.Windows.Forms.DateTimePicker dtkpToDate;
         private System.Windows.Forms.DateTimePicker dtpkFromDate;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.TextBox txbNameFood;
+        private System.Windows.Forms.TextBox txbNameSearch;
         private System.Windows.Forms.Button btnSearchFood;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button btnXem;
         private System.Windows.Forms.Button btnEditFood;
         private System.Windows.Forms.Button btnDeleteFood;
         private System.Windows.Forms.Button btnAddFood;
@@ -1062,7 +1057,6 @@
         private System.Windows.Forms.TextBox txbCategory;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel16;
-        private System.Windows.Forms.Button btnSearchCategory;
         private System.Windows.Forms.Button btnEditCategory;
         private System.Windows.Forms.Button btnDeleteCategory;
         private System.Windows.Forms.Button btnAddCategory;
@@ -1103,5 +1097,7 @@
         private System.Windows.Forms.ColumnHeader nameFood;
         private System.Windows.Forms.ColumnHeader price;
         private System.Windows.Forms.ColumnHeader Category;
+        private System.Windows.Forms.ColumnHeader IdCategory;
+        private System.Windows.Forms.ColumnHeader nameCategory;
     }
 }

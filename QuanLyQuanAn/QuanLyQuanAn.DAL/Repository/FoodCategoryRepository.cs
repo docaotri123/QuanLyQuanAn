@@ -18,9 +18,12 @@ namespace QuanLyQuanAn.DAL.Repository
             this.db = _db;
         }
 
-        public IEnumerable<FoodCategory> GetFoodCategories()
+        public IEnumerable<FoodCategory> GetFoodCategories(bool noTracking = false)
         {
-            return db.FoodCategories.ToList();
+           
+                return db.FoodCategories.AsNoTracking().ToList();
+          
+            
         }
         protected virtual void Dispose(bool disposing)
         {
@@ -48,6 +51,33 @@ namespace QuanLyQuanAn.DAL.Repository
         public string GetNameCategoryById(int? id)
         {
             return db.FoodCategories.FirstOrDefault(m => m.idFoodCategory == id).nameFoodCategory;
+        }
+
+        public void InsertCategory(string name)
+        {
+            FoodCategory category = new FoodCategory();
+            category.nameFoodCategory = name;
+
+            db.FoodCategories.Add(category);
+            db.SaveChanges();
+        }
+
+        public void DeleteCategory(int? id)
+        {
+            var item = db.FoodCategories.FirstOrDefault(m => m.idFoodCategory == id);
+            db.FoodCategories.Remove(item);
+            db.SaveChanges();
+        }
+
+        public void UpdateCategory(int? id, string name)
+        {
+            var item = db.FoodCategories.FirstOrDefault(m => m.idFoodCategory == id);
+            if (item != null)
+            {
+                item.nameFoodCategory = name;
+
+                db.SaveChanges();
+            }
         }
     }
 }
