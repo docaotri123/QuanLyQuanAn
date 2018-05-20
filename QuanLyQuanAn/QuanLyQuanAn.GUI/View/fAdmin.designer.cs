@@ -65,8 +65,10 @@
             this.tpFoodCategory = new System.Windows.Forms.TabPage();
             this.panel17 = new System.Windows.Forms.Panel();
             this.lsvCategory = new System.Windows.Forms.ListView();
+
             this.IdCategory = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.nameCategory = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+
             this.panel10 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -95,7 +97,6 @@
             this.panel14 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel12 = new System.Windows.Forms.Panel();
-            this.btnSearchTable = new System.Windows.Forms.Button();
             this.btnEditTable = new System.Windows.Forms.Button();
             this.btnDeleteTable = new System.Windows.Forms.Button();
             this.btnAddTable = new System.Windows.Forms.Button();
@@ -435,6 +436,9 @@
             this.Category});
             this.lsvFood.FullRowSelect = true;
             this.lsvFood.Location = new System.Drawing.Point(0, 0);
+
+            this.lsvFood.MultiSelect = false;
+
             this.lsvFood.Name = "lsvFood";
             this.lsvFood.Size = new System.Drawing.Size(326, 272);
             this.lsvFood.TabIndex = 0;
@@ -485,15 +489,18 @@
             // 
             // lsvCategory
             // 
+
             this.lsvCategory.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.IdCategory,
             this.nameCategory});
             this.lsvCategory.FullRowSelect = true;
+
             this.lsvCategory.Location = new System.Drawing.Point(2, 4);
             this.lsvCategory.Name = "lsvCategory";
             this.lsvCategory.Size = new System.Drawing.Size(330, 268);
             this.lsvCategory.TabIndex = 0;
             this.lsvCategory.UseCompatibleStateImageBehavior = false;
+
             this.lsvCategory.View = System.Windows.Forms.View.Details;
             // 
             // IdCategory
@@ -504,6 +511,7 @@
             // 
             this.nameCategory.Text = "Name Category";
             this.nameCategory.Width = 120;
+
             // 
             // panel10
             // 
@@ -754,7 +762,6 @@
             // 
             // panel12
             // 
-            this.panel12.Controls.Add(this.btnSearchTable);
             this.panel12.Controls.Add(this.btnEditTable);
             this.panel12.Controls.Add(this.btnDeleteTable);
             this.panel12.Controls.Add(this.btnAddTable);
@@ -762,15 +769,6 @@
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(329, 42);
             this.panel12.TabIndex = 5;
-            // 
-            // btnSearchTable
-            // 
-            this.btnSearchTable.Location = new System.Drawing.Point(260, 4);
-            this.btnSearchTable.Name = "btnSearchTable";
-            this.btnSearchTable.Size = new System.Drawing.Size(66, 35);
-            this.btnSearchTable.TabIndex = 2;
-            this.btnSearchTable.Text = "Xem";
-            this.btnSearchTable.UseVisualStyleBackColor = true;
             // 
             // btnEditTable
             // 
@@ -780,6 +778,7 @@
             this.btnEditTable.TabIndex = 2;
             this.btnEditTable.Text = "Sửa";
             this.btnEditTable.UseVisualStyleBackColor = true;
+            this.btnEditTable.Click += new System.EventHandler(this.btnEditTable_Click_1);
             // 
             // btnDeleteTable
             // 
@@ -789,6 +788,7 @@
             this.btnDeleteTable.TabIndex = 1;
             this.btnDeleteTable.Text = "Xóa";
             this.btnDeleteTable.UseVisualStyleBackColor = true;
+            this.btnDeleteTable.Click += new System.EventHandler(this.btnDeleteTable_Click_1);
             // 
             // btnAddTable
             // 
@@ -798,6 +798,7 @@
             this.btnAddTable.TabIndex = 0;
             this.btnAddTable.Text = "Thêm";
             this.btnAddTable.UseVisualStyleBackColor = true;
+            this.btnAddTable.Click += new System.EventHandler(this.btnAddTable_Click_1);
             // 
             // tpAccount
             // 
@@ -1073,7 +1074,6 @@
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel12;
-        private System.Windows.Forms.Button btnSearchTable;
         private System.Windows.Forms.Button btnEditTable;
         private System.Windows.Forms.Button btnDeleteTable;
         private System.Windows.Forms.Button btnAddTable;

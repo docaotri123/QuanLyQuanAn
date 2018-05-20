@@ -79,6 +79,12 @@ namespace QuanLyQuanAn.DAL.Repository
                 result.statusBill = status;
                 result.discount = discount;
                 result.totalPrice = totalPrice;
+                DateTime? datetime = DateTime.Now;
+                if (status == true)
+                {
+                    result.dateCheckOUt = datetime;
+
+                }
                 db.SaveChanges();
             }
         }
